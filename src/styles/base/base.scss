@@ -1,0 +1,9 @@
+.app {
+    background: $color-white;
+    height: var(--100vh);
+  }
+
+  ::placeholder {
+    color: currentColor;
+    opacity: 1;
+  }

@@ -1,0 +1,82 @@
+.lothus {
+  color: $color-white;
+  height: calc(100vh - 13rem * 2);
+  padding: 0 8rem;
+}
+
+.lothus__wrapper {
+  @extend %cover;
+
+  position: relative;
+}
+
+.lothus__media {
+  @extend %cover;
+}
+
+.lothus__media__image {
+  @extend %cover;
+
+  object-fit: cover;
+}
+
+.lothus__title {
+  font-size: 6.47rem;
+  font-weight: bold;
+  left: 4.5rem;
+  line-height: 1.15;
+  position: absolute;
+  text-transform: uppercase;
+  top: 4.5rem;
+  width: 60rem;
+}
+
+.lothus__content {
+  bottom: 4.5rem;
+  display: flex;
+  left: 4.5rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.lothus__label {
+  font-size: 3.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 32.4rem;
+
+  span:nth-of-type(5) {
+    display: inline-block;
+    font-family: $font-bookmania;
+    font-size: 5.9rem;
+    margin-top: 0.5rem;
+  }
+
+  span:nth-of-type(6),
+  span:nth-of-type(7) {
+    display: inline-block;
+    font-family: $font-narly-ot-outline;
+    font-size: 6rem;
+    margin-top: -1.8rem;
+  }
+}
+
+.lothus__description {
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.23;
+  margin-left: 3.75rem;
+  width: 28rem;
+}
+
+.lothus__art {
+  bottom: 4.5rem;
+  position: absolute;
+  right: 4.5rem;
+  width: 14.5rem;
+}
+
+.lothus__art__image {
+  display: block;
+  width: 100%;
+}

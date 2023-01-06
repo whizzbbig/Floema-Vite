@@ -1,0 +1,33 @@
+<nav class="menu">
+    <div class="menu__wrapper">
+        <a class="menu__title" href="/">
+          <svg class="menu__title__media" viewBox="0 0 210 297">
+            <use xlink:href="/sprites.svg#logo"></use>
+          </svg>
+        </a>
+
+        <!-- USE IF PRISMIC IS ENABLED -->
+        <!-- <ul class="menu__list">
+            {{#each navigation.data.list}}
+                <li class="menu__item">
+                    <a href="{{prismicLink list_link}}" class="menu__link">
+                        {{list_text}}
+                    </a>
+                </li>
+            {{/each}}
+        </ul> -->
+
+        <!-- Using static for lab without Prismic -->
+        <ul class="menu__list">
+            <li class="menu__item">
+                <a href="/about/" class="menu__link">
+                    About
+                </a>
+                <a href="/lothus/" class="menu__link">
+                    Lothus
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

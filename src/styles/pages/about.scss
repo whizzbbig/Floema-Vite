@@ -1,0 +1,38 @@
+.about {
+  font-family: $font-helvetica-neue;
+  padding: 0 8rem;
+}
+
+.about__wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.about__header {
+  display: flex;
+  margin-bottom: 14rem;
+}
+
+.about__title {
+  font-size: 3.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04rem;
+  line-height: 1.2;
+  width: 45rem;
+}
+
+.about__description {
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-left: 5rem;
+  width: 60rem;
+}
+
+.about__content {
+  font-size: 6.9rem;
+  font-weight: 900;
+  line-height: 1.15;
+}

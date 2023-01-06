@@ -1,0 +1,28 @@
+.cursor {
+  height: 10px;
+  left: 0;
+  margin-left: -5px;
+  margin-top: -5px;
+  mix-blend-mode: difference;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 10px;
+  z-index: z('cursor');
+
+  &:after {
+    background: $color-black;
+    border-radius: 50%;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: transform 1s ease;
+    width: 100%;
+  }
+
+  &--hover:after {
+    transform: scale(0);
+  }
+}

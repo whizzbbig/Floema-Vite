@@ -1,0 +1,19 @@
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./utils/responsive";
+@import "./utils/vendors";
+
+@import "./base/reset";
+@import "./base/base";
+@import "./base/fonts";
+
+@import './components/canvas';
+@import './components/preloader';
+@import './components/cursor';
+@import './components/navigation';
+@import './components/footer';
+
+@import './pages/home';
+@import './pages/about';
+@import './pages/lothus';
