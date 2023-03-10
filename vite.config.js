@@ -11,7 +11,7 @@ import Prismic from './src/data/prismic/Prismic.js';
 import PrismicMedias from './src/data/prismic/PrismicMedias.js';
 
 import SpriteHelper from './src/data/sprites/helper.js';
-// import { DynamicRouterBuilder } from './src/data/router/router.js';
+import { DynamicRouterBuilder } from './src/data/router/router.js';
 
 export default async ({ mode }) => {
   process.env = {
@@ -20,11 +20,11 @@ export default async ({ mode }) => {
   };
 
   // Prismic
-  // const prismic = new Prismic()
-  // const results = await prismic.getData()
+  const prismic = new Prismic();
+  const results = await prismic.getData();
 
-  //   const prismicMedias = new PrismicMedias(results)
-  //   await prismicMedias.generate()
+  const prismicMedias = new PrismicMedias(results);
+  await prismicMedias.generate();
 
   // SVG Sprite
   const spriteHelper = new SpriteHelper('src/sprites');
@@ -32,9 +32,9 @@ export default async ({ mode }) => {
 
   // Static Pages
   const input = {
-    main: resolve('src/pages/index.html'),
     about: resolve('src/pages/about/index.html'),
-    lothus: resolve('src/pages/lothus/index.html'),
+    collections: resolve('src/pages/collections/index.html'),
+    main: resolve('src/pages/index.html'),
   };
 
   // Dynamic Router
@@ -48,14 +48,14 @@ export default async ({ mode }) => {
         input,
       },
     },
+
     plugins: [
       glsl.default(),
 
       handlebars({
         context() {
           return {
-            // ENABLE WHEN USING PRISMIC
-            // {...results}
+            ...results,
           };
         },
         helpers: handlebarsHelpers,

@@ -25,18 +25,19 @@
     <meta name="twitter:description" content="A boilerplate for Lothus projects." />
     <meta name="twitter:image:src" content="{{meta.data.image.url}}" />
 
-    <title>Lothus boilerplate</title>
+    <title>Floema</title>
   </head>
   <body>
-    {{> navigation/menu }}
+    {{> navigation/preloader }}
+    {{> navigation/navigation }}
 
+    {{!-- {{> components/grid-debugger }} --}}
     {{> components/cursor }}
 
-    <div class="app" data-template="{{ template }}">
+    <div class="app" data-template="{{ template }}" id="app">
       {{> @partial-block }}
     </div>
 
-    {{> navigation/footer }}
 
     <script type="module" src="{{resolve-from-root '../app/main.js'}}"></script>
   </body>

@@ -8,12 +8,12 @@ export default class AboutPage extends Page {
   constructor() {
     super({
       element: '.about',
-      elements: {
-        title: '.about__title',
-        description: '.about__description',
-        content: '.about__content',
-      },
+      elements: {},
     });
+  }
+
+  beforeShow() {
+    super.beforeShow();
   }
 
   show() {
@@ -26,26 +26,6 @@ export default class AboutPage extends Page {
       {
         autoAlpha: 1,
         duration: 0.4,
-      }
-    );
-
-    this.timelineIn.fromTo(
-      [this.elements.title, this.elements.description, this.elements.content],
-      {
-        autoAlpha: 0,
-        opacity: 0,
-        y: '-50%',
-        skewY: '-10deg',
-      },
-      {
-        opacity: 1,
-        autoAlpha: 1,
-        duration: 0.4,
-        y: '0%',
-        skewY: '0deg',
-        stagger: {
-          amount: 0.1,
-        },
       }
     );
 

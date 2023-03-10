@@ -8,25 +8,12 @@ export default class HomePage extends Page {
   constructor() {
     super({
       element: '.home',
-      elements: {
-        introTitle: '.home__intro__title',
-        highlightTitle: '.home__highlight__title',
-      },
+      elements: {},
     });
   }
 
   beforeShow() {
     super.beforeShow();
-
-    this.elements.introTitleSpans = split({
-      element: this.elements.introTitle,
-      expression: '<br>',
-    });
-
-    this.elements.highlightTitleSpans = split({
-      element: this.elements.highlightTitle,
-      expression: '<br>',
-    });
   }
 
   show() {
@@ -39,21 +26,6 @@ export default class HomePage extends Page {
       {
         autoAlpha: 1,
         duration: 0.4,
-      }
-    );
-
-    this.timelineIn.fromTo(
-      [this.elements.introTitle, this.elements.highlightTitle],
-      {
-        autoAlpha: 0,
-        opacity: 0,
-        y: '-50%',
-      },
-      {
-        opacity: 1,
-        autoAlpha: 1,
-        duration: 0.4,
-        y: '0%',
       }
     );
 

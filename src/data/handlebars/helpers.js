@@ -26,8 +26,8 @@ export const handlebarsHelpers = {
 
   prismicMedia: ({ url } = {}) => {
     if (url) {
-      url = url.replace('https://dirName.cdn.prismic.io/dirName/', '/medias/') // TODO:
-      url = url.replace('https://images.prismic.io/dirName/', '/medias/') // TODO:
+      url = url.replace('https://floema-ice.cdn.prismic.io/floema-ice/', '/medias/') // TODO:
+      url = url.replace('https://images.prismic.io/floema-ice/', '/medias/') // TODO:
       url = url.replace('?auto=compress,format', '')
       url = url.replace(/\+/g, '-')
     }

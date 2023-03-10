@@ -31,7 +31,6 @@
 
     opacity: 0;
     visibility: hidden;
-    z-index: z("content");
 }
 
 %page__wrapper {
@@ -50,3 +49,4 @@
         width: 100%;
     }
 }
+

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-const ID = 'dirName'; // TODO:
+const ID = 'floema-ice'; // TODO:
 const DIRECTORY = 'src/pages/public/medias';
 
 export default class {

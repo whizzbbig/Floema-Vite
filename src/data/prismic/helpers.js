@@ -1,7 +1,9 @@
-export const prismicHelpersLinks = (doc) => {
-  if (doc.type === 'product') {
-    return `/product/${doc.uid}/`
+export const prismicHelpersLinks = doc => {
+  if (doc.type === 'home') {
+    return `/`;
+  } else if (doc.type === 'product') {
+    return `/product/${doc.uid}/`;
   } else {
-    return `/${doc.uid}/`
+    return `/${doc.uid}/`;
   }
-}
+};

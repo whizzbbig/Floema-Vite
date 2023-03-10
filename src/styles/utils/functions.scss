@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @function z($name) {
   @if index($z-indexes, $name) {
     @return (length($z-indexes) - index($z-indexes, $name)) + 1;
@@ -7,3 +9,30 @@
     @return null;
   }
 }
+
+@function desktop-vw($px-vw, $base-vw: $desktop-viewport) {
+    @return math.div($px-vw * 100vw, $base-vw);
+  }
+
+  @function desktop-vh($px-vh) {
+    @return math.div($px-vh * 100vh, 784px);
+  }
+
+  @function mobile-vw($px-vw) {
+    @return math.div($px-vw * 100vw, $mobile-viewport);
+  }
+
+  @function mobile-vh($px-vh) {
+    @return math.div($px-vh * 100vh, 667px);
+  }
+
+  @mixin grid-offset-generator($grid-columns: 14, $gap: 40px) {
+    @for $i from 1 through $grid-columns {
+      .or-#{$i}-col {
+        margin-right: desktop-vw(60px + ($i * $gap));
+      }
+      .ol-#{$i}-col {
+        margin-left: desktop-vw(60px + ($i * $gap));
+      }
+    }
+  }

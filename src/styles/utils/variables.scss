@@ -51,3 +51,11 @@ $z-indexes: (
   'app',
   'cursor',
 );
+
+/* Breakpoints */
+$mobile-breakpoint: 800px;
+$mobile-breakpoint-plus-one: 801px;
+
+// Viewport Sizes
+$desktop-viewport: 1440px;
+$mobile-viewport: 375px;

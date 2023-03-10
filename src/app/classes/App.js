@@ -1,208 +1,330 @@
-import AutoBind from 'auto-bind'
+import AutoBind from 'auto-bind';
 
-import AppLink from './AppLink'
+import AppLink from './AppLink';
+import AppSprites from './AppSprites';
 
-import Canvas from '@/canvas'
+import Canvas from '@/canvas';
 
 export default class App {
-  constructor () {
-    AutoBind(this)
+  constructor() {
+    AutoBind(this);
 
-    this.initContainer()
+    document.documentElement.style.setProperty('--100vh', `${window.innerHeight}px`) // prettier-ignore
+
+    this.initContainer();
   }
 
   /**
    * Initialization.
    */
-  initContainer () {
-    this.content = document.querySelector('.app')
-    this.template = this.content.getAttribute('data-template')
+  initContainer() {
+    this.content = document.querySelector('.app');
+    this.template = this.content.getAttribute('data-template');
 
     if (!this.template) {
-      console.warn('The attribute `data-template` in `.app` element is required for the application to run properly.')
+      console.warn(
+        'The attribute `data-template` in `.app` element is required for the application to run properly.'
+      );
     }
   }
 
-  initCache () {
-    this.cache = {}
+  initCache() {
+    this.cache = {};
   }
 
-  initComponents (components) {
+  initComponents(components) {
     this.components = components.map(({ component: Component }) => {
-      return new Component({
-
-      })
-    })
+      return new Component({});
+    });
   }
 
-  initRoutes (routes) {
-    this.routes = routes
-    this.pages = {}
+  initMouse() {
+    this.mouse = {
+      start: {
+        x: 0,
+        y: 0,
+      },
+      end: {
+        x: 0,
+        y: 0,
+      },
+    };
+  }
+
+  initRoutes(routes) {
+    this.routes = routes;
+    this.pages = {};
 
     routes.forEach(({ component: Component, template }) => {
-      this.pages[template] = new Component()
-    })
+      this.pages[template] = new Component();
+    });
 
-    this.page = this.pages[this.template]
-    this.page.create()
-    this.page.show()
+    this.page = this.pages[this.template];
+    this.page.create();
+
+    if (this.preloader) {
+      this.preloader.on('complete', _ => {
+        this.onResize();
+
+        this.page.show();
+      });
+    } else {
+      this.page.show();
+    }
   }
 
-  initTransitions (transitions) {
-    this.transitions = transitions.map(transition => {
-
-    })
+  initTransitions(transitions) {
+    this.transitions = transitions.map(transition => {});
   }
 
-  initLinks () {
-    this.links = document.querySelectorAll('a')
+  initLinks() {
+    if (this.links) {
+      this.links.forEach(link => link.destroy());
+    }
+
+    this.links = document.querySelectorAll('a');
 
     this.links = [...this.links].map(element => {
       const link = new AppLink({
-        element
-      })
+        element,
+      });
 
-      link.on('click', this.onLinkClick)
-    })
+      link.on('click', this.onLinkClick);
+
+      return link;
+    });
   }
 
-  initCanvas () {
-    this.canvas = new Canvas({
-      pages: this.pages,
-      routes: this.routes,
-      template: this.template
-    })
-
-    this.canvas.show(this.template)
-
-    this.components.push(this.canvas)
+  initSprites() {
+    this.sprites = new AppSprites();
   }
 
-  init () {
-    this.initCache()
-    this.initLinks()
-    this.initCanvas()
+  init() {
+    this.initCache();
+    this.initMouse();
+    this.initLinks();
+    this.initSprites();
 
-    this.onResize()
+    this.onResize();
 
-    this.addEventListeners()
+    this.addEventListeners();
 
-    this.update()
+    this.update();
   }
 
   /**
    * Routing.
    */
-  onLinkClick ({ href }) {
-    href = href.replace(window.location.origin, '')
-
-    const promiseCanvas = this.canvas.hide()
-    const promisePage = this.page.hide()
-    const promises = [promiseCanvas, promisePage]
-
-    if (!this.cache[href]) {
-      const promiseFetch = window.fetch(href)
-
-      promises.push(promiseFetch)
+  async onLinkClick({ href, pushState = true }) {
+    if (this.isFetching) {
+      return;
     }
 
-    Promise.all(promises).then(async ([canvas, page, request]) => {
-      if (request) {
-        const response = await request.text()
+    this.isFetching = true;
 
-        this.cache[href] = response
-      }
+    href = href.replace(window.location.origin, '');
 
-      this.onPageRequested({
-        href,
-        response: this.cache[href]
-      })
-    })
+    let promiseFetch;
+
+    if (!this.cache[href]) {
+      promiseFetch = await window.fetch(href);
+    }
+
+    if (promiseFetch) {
+      const response = await promiseFetch.text();
+
+      this.cache[href] = response;
+    }
+
+    this.onPageRequested({
+      href,
+      response: this.cache[href],
+      pushState,
+    });
   }
 
-  onPageRequested ({ href, response }) {
-    const html = document.createElement('div')
+  async onPageRequested({ href, response, pushState }) {
+    const html = document.createElement('div');
 
-    html.innerHTML = response
+    html.innerHTML = response;
 
-    const app = html.querySelector('.app')
-    const appTemplate = app.getAttribute('data-template')
+    const app = html.querySelector('.app');
+    const appTemplate = app.getAttribute('data-template');
 
-    this.content.setAttribute('data-template', appTemplate)
-    this.content.innerHTML = app.innerHTML
+    const content = document.createElement('div');
 
-    this.template = appTemplate
+    content.innerHTML = app.innerHTML;
 
-    this.page = this.pages[this.template]
-    this.page.create()
-    this.page.show()
+    this.content.setAttribute('data-template', appTemplate);
+    this.content.appendChild(content.firstElementChild);
 
-    this.canvas.show(this.template)
+    this.initLinks();
 
-    window.history.pushState({}, document.title, href)
+    window.scrollTo(0, 0);
+
+    const previousPage = this.page;
+
+    this.page = this.pages[appTemplate];
+    this.page.create();
+    this.page.onResize?.();
+
+    if (appTemplate === 'product' || this.template === 'product') {
+      await previousPage.hide(this.page);
+
+      this.page.show(previousPage);
+    } else {
+      this.page.show(previousPage);
+
+      await previousPage.hide(this.page);
+    }
+
+    this.template = appTemplate;
+
+    window.requestAnimationFrame(_ => {
+      window.requestAnimationFrame(_ => {
+        this.page.onResize?.();
+
+        this.content.removeChild(this.content.firstElementChild);
+
+        this.isFetching = false;
+
+        if (pushState) {
+          window.history.pushState({}, document.title, href);
+        }
+
+        this.components.forEach(component => {
+          component.onNavigate?.();
+        });
+      });
+    });
+  }
+
+  onPopState() {
+    this.onLinkClick({
+      href: window.location.href,
+      pushState: false,
+    });
   }
 
   /**
    * Events.
    */
-  onMouseDown (event) {
-    this.components.forEach(component => component.onMouseDown?.({
-      originalEvent: event
-    }))
+  onMouseDown(event) {
+    if (event.touches) {
+      this.mouse.start = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY,
+      };
+    } else {
+      this.mouse.start = {
+        x: event.clientX,
+        y: event.clientY,
+      };
+    }
+
+    this.components.forEach(component =>
+      component.onMouseDown?.({
+        originalEvent: event,
+        mouse: this.mouse,
+      })
+    );
+
+    this.page.onMouseDown?.({
+      originalEvent: event,
+      mouse: this.mouse,
+    });
   }
 
-  onMouseMove (event) {
-    this.components.forEach(component => component.onMouseMove?.({
-      originalEvent: event
-    }))
+  onMouseMove(event) {
+    if (event.touches) {
+      this.mouse.end = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY,
+      };
+    } else {
+      this.mouse.end = {
+        x: event.clientX,
+        y: event.clientY,
+      };
+    }
+
+    this.mouse.distance = {
+      x: this.mouse.start.x - this.mouse.end.x,
+      y: this.mouse.start.y - this.mouse.end.y,
+    };
+
+    this.components.forEach(component =>
+      component.onMouseMove?.({
+        originalEvent: event,
+        mouse: this.mouse,
+      })
+    );
+
+    this.page.onMouseMove?.({
+      originalEvent: event,
+      mouse: this.mouse,
+    });
   }
 
-  onMouseUp (event) {
-    this.components.forEach(component => component.onMouseUp?.({
-      originalEvent: event
-    }))
+  onMouseUp(event) {
+    this.components.forEach(component =>
+      component.onMouseUp?.({
+        originalEvent: event,
+        mouse: this.mouse,
+      })
+    );
+
+    this.page.onMouseUp?.({
+      originalEvent: event,
+      mouse: this.mouse,
+    });
   }
 
-  onResize () {
-    this.windowInnerSizes = {
+  onResize() {
+    window.INNER_SIZES = {
       height: window.innerHeight,
-      width: window.innerWidth
-    }
+      width: window.innerWidth,
+    };
 
-    this.windowOuterSizes = {
+    window.OUTER_SIZES = {
       height: window.outerHeight,
-      width: window.outerWidth
-    }
+      width: window.outerWidth,
+    };
 
-    this.components.forEach(component => component.onResize?.({
-      windowInnerSizes: this.windowInnerSizes,
-      windowOuterSizes: this.windowOuterSizes
-    }))
+    document.documentElement.style.setProperty(
+      '--100vh',
+      `${window.INNER_SIZES.height}px`
+    );
+
+    this.components.forEach(component => component.onResize?.());
+    this.page.onResize?.();
   }
 
   /**
    * Listeners.
    */
-  addEventListeners () {
-    window.addEventListener('mousedown', this.onMouseDown)
-    window.addEventListener('mousemove', this.onMouseMove)
-    window.addEventListener('mouseup', this.onMouseUp)
+  addEventListeners() {
+    window.addEventListener('mousedown', this.onMouseDown);
+    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('mouseup', this.onMouseUp);
 
-    window.addEventListener('touchstart', this.onMouseDown)
-    window.addEventListener('touchmove', this.onMouseMove)
-    window.addEventListener('touchup', this.onMouseUp)
+    window.addEventListener('touchstart', this.onMouseDown);
+    window.addEventListener('touchmove', this.onMouseMove);
+    window.addEventListener('touchup', this.onMouseUp);
 
-    window.addEventListener('resize', this.onResize)
+    window.addEventListener('resize', this.onResize);
+
+    window.addEventListener('popstate', this.onPopState);
   }
 
   /**
    * Loop.
    */
-  update () {
-    this.components.forEach(component => component.update?.())
+  update() {
+    this.page?.update?.();
 
-    this.page?.update?.()
+    this.components.forEach(component => component.update?.());
 
-    this.frame = requestAnimationFrame(this.update)
+    this.frame = window.requestAnimationFrame(this.update);
   }
 }
