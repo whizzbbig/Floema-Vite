@@ -23,18 +23,18 @@ nvm install 17.5
 
 # Install the dependencies
 ```sh
-yarn
+pnpm i
 ```
 
 # Run dev environment
 ```sh
-yard run dev
+pnpm run dev
 ```
 
 # How to run the static version
 ```sh
-yarn run build
-yarn run preview
+pnpm run build
+pnpm run preview
 ```
 
 ## .env
