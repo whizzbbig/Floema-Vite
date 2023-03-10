@@ -10,12 +10,6 @@ $_colors: (
 $font-george-x: 'George X';
 $font-suisse-bp: 'Suisse BP';
 
-$breakpoints: (
-  'phone': 768px,
-  'tablet': 1024px,
-  'desktop': 1920px,
-) !default;
-
 // 1st level z-indexes. You can get them with z(Z_INDEX_NAME)
 $_z-indexes: (
   preloader: 1,
@@ -41,5 +35,3 @@ $_easings: (
   $_constants: $_constants,
   $_easings: $_easings
 );
-
-@import 'node_modules/include-media/dist/_include-media.scss';

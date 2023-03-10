@@ -1,18 +1,22 @@
-%cover {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
 }
 
-%center {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-@mixin ratio ($height, $width) {
+@mixin ratio($height, $width) {
   font-size: 0;
   overflow: hidden;
   position: relative;
@@ -22,5 +26,18 @@
     display: inline-block;
     padding-top: $width / $height * 100%;
     width: 100%;
+  }
+}
+
+@mixin stagger(
+  $step: 50ms,
+  $initial: 0ms,
+  $max: 20,
+  $prop: 'transition-delay'
+) {
+  @for $i from 1 through $max {
+    &:nth-of-type(#{$i}) {
+      #{$prop}: $initial + $step * $i;
+    }
   }
 }
