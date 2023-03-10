@@ -1,19 +1,32 @@
-@import "./utils/variables";
-@import "./utils/functions";
-@import "./utils/mixins";
-@import "./utils/responsive";
-@import "./utils/vendors";
+@import './base/reset';
 
-@import "./base/reset";
-@import "./base/base";
-@import "./base/fonts";
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
+@import './utils/responsive';
 
-@import './components/canvas';
+@import './shared/descriptions';
+@import './shared/links';
+@import './shared/pages';
+@import './shared/titles';
+@import './shared/vertical-titles';
+
+@import './base/fonts';
+@import './base/base';
+
 @import './components/preloader';
-@import './components/cursor';
-@import './components/navigation';
-@import './components/footer';
-@import './components/grid-debugger';
+@import './components/transition';
 
-@import './pages/home';
-@import './pages/about';
+@import './layout/navigation';
+
+@import './pages/about/about';
+@import './pages/about/content';
+@import './pages/about/gallery';
+@import './pages/about/highlight';
+
+@import './pages/collections/collections';
+
+@import './pages/details/details';
+
+@import './pages/home/home';

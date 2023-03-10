@@ -1,0 +1,5 @@
+.transition {
+  @extend %cover;
+
+  z-index: z('transition');
+}
