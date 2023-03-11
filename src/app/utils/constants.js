@@ -1,0 +1,5 @@
+export const COLOR_BRIGHT_GRAY = '#37384C';
+export const COLOR_QUARTER_SPANISH_WHITE = '#F9F1E7';
+
+export const BREAKPOINT_TABLET = 1024;
+export const BREAKPOINT_PHONE = 768;

@@ -2,8 +2,8 @@ import { Mesh, Plane, Program, Texture } from 'ogl';
 
 import Scene from '@/canvas/components/Scene';
 
-import fragment from '@/shaders/lothus-fragment.glsl';
-import vertex from '@/shaders/lothus-vertex.glsl';
+import fragment from '@/shaders/lothus.frag';
+import vertex from '@/shaders/lothus.vert';
 
 import { lerp } from '@/utils/math';
 

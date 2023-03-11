@@ -1,4 +1,5 @@
 import AutoBind from 'auto-bind';
+import Stats from 'stats.js';
 
 import AppLink from './AppLink';
 import AppSprites from './AppSprites';
@@ -7,6 +8,10 @@ import Canvas from '@/canvas';
 
 export default class App {
   constructor() {
+    if (import.meta.env.DEV) {
+      this.initStats();
+    }
+
     AutoBind(this);
 
     document.documentElement.style.setProperty('--100vh', `${window.innerHeight}px`) // prettier-ignore
@@ -26,6 +31,12 @@ export default class App {
         'The attribute `data-template` in `.app` element is required for the application to run properly.'
       );
     }
+  }
+
+  initStats() {
+    this.stats = new Stats();
+
+    document.body.appendChild(this.stats.dom);
   }
 
   initCache() {
@@ -321,9 +332,17 @@ export default class App {
    * Loop.
    */
   update() {
+    if (this.stats) {
+      this.stats.begin();
+    }
+
     this.page?.update?.();
 
     this.components.forEach(component => component.update?.());
+
+    if (this.stats) {
+      this.stats.end();
+    }
 
     this.frame = window.requestAnimationFrame(this.update);
   }
