@@ -6,6 +6,7 @@ import Component from '@/classes/Component';
 import Mouse from './components/Mouse';
 
 import Textures from './utils/Textures';
+import Debug from './utils/Debug';
 
 export default class App extends Component {
   constructor({ pages, routes, template }) {
@@ -28,6 +29,13 @@ export default class App extends Component {
     this.createGroup();
     this.createMouse();
     this.createPages();
+    this.createDebug();
+  }
+
+  createDebug() {
+    if (import.meta.env.DEV) {
+      this.debug = new Debug();
+    }
   }
 
   createRenderer() {
