@@ -23,6 +23,7 @@ export default class PrismicHook {
     const products = await client.getAllByType('product');
     const collection = await client.getAllByType('collection');
     const collectionsList = await client.getSingle('collections');
+    const prdouctList = await client.getSingle('product');
 
     // console.log(preloader);
 
@@ -31,22 +32,44 @@ export default class PrismicHook {
     const collections = collectionsList.data.list.map(item => {
       item.collection = collection.find(({ uid }) => uid === item.collection.uid); // prettier-ignore
 
-      //   console.log(item.collection.data);
+      // fetch the product and its image and model url from collection
+      item.collection.data.list.map(product => {
+        product.product = products.find(({ uid }) => uid === product.product.uid); // prettier-ignore
+        product.product.data.image = product.product.data.image;
+        product.product.data.model = product.product.data.model;
+      });
+
+      // console log the fetched items
+      //   item.collection.data.list.map(product => {
+      //     console.log(product.product.data.image);
+      //     console.log(product.product.data.model);
+      //   });
 
       return item.collection;
     });
 
     // console log each title of the collections
-    // collections.map(collection => {
-    //   console.log(collection.data.title);
+    collections.map(collection => {
+      console.log(collection.data.title);
+    });
+
+    // console log product using map on products
+    products.map(product => {
+      // fetch the uid of product.data.collection and then get the title of collection
+      const collection = collections.find(({ uid }) => uid === product.data.collection.uid); // prettier-ignore
+      product.data.collection = collection.data.title;
+    });
+
+    // const collectionsTitle = proudcts.map(product => {
+    //   console.log(product);
     // });
 
-    console.log(home);
-
     // console log each image of the gallery in home page
-    home.data.gallery.map(image => {
-      console.log(image.image);
-    });
+    // home.data.gallery.map(image => {
+    //   console.log(image.image);
+    // });
+
+    // console.log(about.data.body);
 
     // console.log about's slices
     // const aboutSlice = about.data.body.map(slice => {
