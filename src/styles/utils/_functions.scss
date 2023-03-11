@@ -40,6 +40,14 @@ $_def-constants: ();
   @return _superget('Constants', $key, $_constants, $_def-constants);
 }
 
+// FONTS
+$_fonts: () !default;
+$_def-fonts: ();
+
+@function font($key) {
+  @return _superget('Fonts', $key, $_fonts, $_def-fonts);
+}
+
 // EASINGS
 $_easings: () !default;
 $_def-easings: ();

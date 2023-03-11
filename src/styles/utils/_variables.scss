@@ -7,8 +7,11 @@ $_colors: (
   white: #fff,
 );
 
-$font-george-x: 'George X';
-$font-suisse-bp: 'Suisse BP';
+// You can get them with font(FONT)
+$_fonts: (
+  george-x: 'George X',
+  suisse-bp: 'Suisse BP',
+);
 
 // 1st level z-indexes. You can get them with z(Z_INDEX_NAME)
 $_z-indexes: (
@@ -38,6 +41,7 @@ $breakpoints: (
 @forward './functions' with (
   $_z-indexes: $_z-indexes,
   $_colors: $_colors,
+  $_fonts: $_fonts,
   $_constants: $_constants,
   $_easings: $_easings
 );

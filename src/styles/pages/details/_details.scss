@@ -188,7 +188,7 @@
 
   &:before {
     content: '↗';
-    font-family: $font-suisse-bp;
+    font-family: font(suisse-bp);
     font-weight: 100;
     margin-left: 1rem;
     margin-top: -0.2rem;
