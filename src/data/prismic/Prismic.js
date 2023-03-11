@@ -24,16 +24,28 @@ export default class PrismicHook {
     const collection = await client.getAllByType('collection');
     const collectionsList = await client.getSingle('collections');
 
-    console.log(preloader);
+    // console.log(preloader);
 
     fs.writeFileSync('src/pages/public/products.json', JSON.stringify(products), 'utf8') // prettier-ignore
 
     const collections = collectionsList.data.list.map(item => {
       item.collection = collection.find(({ uid }) => uid === item.collection.uid); // prettier-ignore
 
-      console.log(item.collection.data);
+      //   console.log(item.collection.data);
 
       return item.collection;
+    });
+
+    // console log each title of the collections
+    // collections.map(collection => {
+    //   console.log(collection.data.title);
+    // });
+
+    console.log(home);
+
+    // console log each image of the gallery in home page
+    home.data.gallery.map(image => {
+      console.log(image.image);
     });
 
     // console.log about's slices
@@ -42,11 +54,11 @@ export default class PrismicHook {
     // });
 
     // console.log about slice_type == content slice primary
-    const aboutSlice = about.data.body.map(slice => {
-      if (slice.slice_type === 'content') {
-        console.log(slice.primary);
-      }
-    });
+    // const aboutSlice = about.data.body.map(slice => {
+    //   if (slice.slice_type === 'content') {
+    //     console.log(slice.primary);
+    //   }
+    // });
 
     return {
       about,

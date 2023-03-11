@@ -1,7 +1,36 @@
 {{#>layout template='home'}}
     <div class="home">
         <div class="home__wrapper">
-            <h1 class="home__title">Home page</h1>
+
+            <div class="home__titles">
+                {{#each collections}}
+                    <div class="home__titles__label">
+                        <h4 class="home__titles__label__text">
+                            Collection {{indexToWord @index}}
+                        </h4>
+                    </div>
+                    <div class="home__titles__title">
+                        <h1 class="home__titles__title__text">{{data.title}}</h1>
+                    </div>
+                {{/each}}
+            </div>
+
+            <div class="home__gallery">
+                {{#each home.data.gallery}}
+                    <figure class="home__gallery__media">
+                        <img data-src="{{prismicMedia image}}" alt="" class="home__gallery__media__image">
+                    </figure>
+                {{/each}}
+            </div>
+
+            <a href="{{prismicLink home.data.collections}}" class="home__link">
+                <span>{{home.data.button}}</span>
+
+                <svg class="home__link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 60">
+                    <path stroke="#fff" opacity="0.4" fill="none" d="M144,0.5c79.25,0,143.5,13.21,143.5,29.5S223.25,59.5,144,59.5S0.5,46.29,0.5,30S64.75,0.5,144,0.5z"/>
+                    <path stroke="#fff" fill="none" d="M144,0.5c79.25,0,143.5,13.21,143.5,29.5S223.25,59.5,144,59.5S0.5,46.29,0.5,30S64.75,0.5,144,0.5z"/>
+                </svg>
+            </a>
         </div>
     </div>
 {{/layout}}
