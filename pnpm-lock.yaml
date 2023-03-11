@@ -20,6 +20,7 @@ specifiers:
   sass: ^1.49.8
   sharp: ^0.30.4
   standard: ^16.0.4
+  stats.js: ^0.17.0
   svgstore: ^3.0.1
   tweakpane: ^3.1.6
   url: ^0.11.0
@@ -49,6 +50,7 @@ dependencies:
   sass: 1.58.3
   sharp: 0.30.7
   standard: 16.0.4
+  stats.js: 0.17.0
   svgstore: 3.0.1
   tweakpane: 3.1.6
   url: 0.11.0
@@ -5680,6 +5682,10 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: false
+
+  /stats.js/0.17.0:
+    resolution: {integrity: sha512-hNKz8phvYLPEcRkeG1rsGmV5ChMjKDAWU7/OJJdDErPBNChQXxCo3WZurGpnWc6gZhAzEPFad1aVgyOANH1sMw==}
     dev: false
 
   /strict-uri-encode/1.1.0:
