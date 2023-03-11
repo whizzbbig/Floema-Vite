@@ -68,6 +68,10 @@ Handlebars.registerHelper('indexToWord', function (index) {
   return ones[adjustedIndex];
 });
 
+Handlebars.registerHelper('eq', function (a, b) {
+  return a === b;
+});
+
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
   switch (operator) {
     case '==':

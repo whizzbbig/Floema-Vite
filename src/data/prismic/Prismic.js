@@ -41,12 +41,14 @@ export default class PrismicHook {
     //   console.log(collection.data.title);
     // });
 
-    console.log(home);
+    // console.log(home);
 
     // console log each image of the gallery in home page
-    home.data.gallery.map(image => {
-      console.log(image.image);
-    });
+    // home.data.gallery.map(image => {
+    //   console.log(image.image);
+    // });
+
+    console.log(about.data.body);
 
     // console.log about's slices
     // const aboutSlice = about.data.body.map(slice => {
