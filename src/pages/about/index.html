@@ -1,76 +1,76 @@
 {{#>layout template='about'}}
-<div class="about">
-    <div class="about__wrapper">
-        <section class="about__gallery">
-            <div class="about__gallery__wrapper">
-                {{#each about.data.gallery}}
-                    <figure class="about__gallery__media">
-                        <img data-src="{{prismicMedia image}}" alt="" class="about__gallery__media__image">
-                    </figure>
-                {{/each}}
-            </div>
-        </section>
+    <div class="about">
+        <div class="about__wrapper">
+            <section class="about__gallery">
+                <div class="about__gallery__wrapper">
+                    {{#each about.data.gallery}}
+                        <figure class="about__gallery__media">
+                            <img data-src="{{prismicMedia image}}" alt="" class="about__gallery__media__image">
+                        </figure>
+                    {{/each}}
+                </div>
+            </section>
 
-        {{#each about.data.body}}
+            {{#each about.data.body}}
 
-            {{#ifCond slice_type '==' 'title'}}
-                <h2 class="about__title">{{breaklines primary.text}}</h2>
-            {{/ifCond}}
+                {{#ifCond slice_type '==' 'title'}}
+                    <h2 class="about__title">{{breaklines primary.text}}</h2>
+                {{/ifCond}}
 
-            {{#ifCond slice_type '==' 'content'}}
-                <section class="about__content {{#if (eq primary.type 'Left')}}about__content--left{{else}}about__content--right{{/if}}">
-                    <div class="about__content__wrapper">
-                        <div class="about__content__box">
-                            <p class="about__content__label">{{primary.label}}</p>
-                            <div class="about__content__description">{{{prismicHTML primary.description}}}</div>
-                            <figure class="about__content__media">
-                                <img data-src="{{prismicMedia primary.image}}" alt="" class="about__content__media__image">
-                            </figure>
-                        </div>
-                    </div>
-                </section>
-            {{/ifCond}}
-
-            {{#ifCond slice_type '==' 'highlight'}}
-                <section class="about__highlight">
-                    <div class="about__highlight__wrapper">
-                        {{#if primary.link.url}}
-                            <a href="{{prismicLink primary.link}}" class="about__highlight__link">
-                                {{#if primary.label}}
-                                    <p class="about__highlight__label">{{primary.label}}</p>
-                                {{/if}}
-                                <h3 class="about__highlight__title">{{primary.title}}</h3>
-                            </a>
-
-                            {{else}}
-
-                            <div class="about__highlight__link">
-                                {{#if primary.label}}
-                                    <p class="about__highlight__label">{{primary.label}}</p>
-                                {{/if}}
-                                <h3 class="about__highlight__title">{{primary.title}}</h3>
-                            </div>
-                        {{/if}}
-
-                        <div class="about__highlight__medias">
-                            {{#each items}}
-                                <figure class="about__highlight__media">
-                                    <div class="about__highlight__media__wrapper">
-                                        <img data-src="{{prismicMedia image}}" alt="" class="about__highlight__media__image">
-                                    </div>
+                {{#ifCond slice_type '==' 'content'}}
+                    <section class="about__content {{#if (eq primary.type 'Left')}}about__content--left{{else}}about__content--right{{/if}}">
+                        <div class="about__content__wrapper">
+                            <div class="about__content__box">
+                                <p class="about__content__label">{{primary.label}}</p>
+                                <div class="about__content__description">{{{prismicHTML primary.description}}}</div>
+                                <figure class="about__content__media">
+                                    <img data-src="{{prismicMedia primary.image}}" alt="" class="about__content__media__image">
                                 </figure>
-                            {{/each}}
+                            </div>
                         </div>
-                    </div>
-                </section>
-            {{/ifCond}}
+                    </section>
+                {{/ifCond}}
 
-        {{/each}}
+                {{#ifCond slice_type '==' 'highlight'}}
+                    <section class="about__highlight">
+                        <div class="about__highlight__wrapper">
+                            {{#if primary.link.url}}
+                                <a href="{{prismicLink primary.link}}" class="about__highlight__link">
+                                    {{#if primary.label}}
+                                        <p class="about__highlight__label">{{primary.label}}</p>
+                                    {{/if}}
+                                    <h3 class="about__highlight__title">{{primary.title}}</h3>
+                                </a>
 
-        <footer class="about__footer">
-            <div class="about__footer__copyright">{{about.data.footer_copyright}}</div>
-            <div class="about__footer__credits">{{prismicHTML about.data.footer_credits}}</div>
-        </footer>
+                                {{else}}
+
+                                <div class="about__highlight__link">
+                                    {{#if primary.label}}
+                                        <p class="about__highlight__label">{{primary.label}}</p>
+                                    {{/if}}
+                                    <h3 class="about__highlight__title">{{primary.title}}</h3>
+                                </div>
+                            {{/if}}
+
+                            <div class="about__highlight__medias">
+                                {{#each items}}
+                                    <figure class="about__highlight__media">
+                                        <div class="about__highlight__media__wrapper">
+                                            <img data-src="{{prismicMedia image}}" alt="" class="about__highlight__media__image">
+                                        </div>
+                                    </figure>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </section>
+                {{/ifCond}}
+
+            {{/each}}
+
+            <footer class="about__footer">
+                <div class="about__footer__copyright">{{about.data.footer_copyright}}</div>
+                <div class="about__footer__credits">{{prismicHTML about.data.footer_credits}}</div>
+            </footer>
+        </div>
     </div>
-  </div>
 {{/layout}}

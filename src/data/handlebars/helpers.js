@@ -52,6 +52,10 @@ Handlebars.registerHelper('math', function (l, operator, r, options) {
   }[operator];
 });
 
+Handlebars.registerHelper('toLowerCase', function (str) {
+  return str.toLowerCase();
+});
+
 Handlebars.registerHelper('length', function (value) {
   return value.length;
 });
@@ -66,6 +70,13 @@ Handlebars.registerHelper('indexToWord', function (index) {
   }
 
   return ones[adjustedIndex];
+});
+
+Handlebars.registerHelper('replace', function (string, find, replace) {
+  if (string && find && replace) {
+    return string.split(find).join(replace);
+  }
+  return string;
 });
 
 Handlebars.registerHelper('eq', function (a, b) {
