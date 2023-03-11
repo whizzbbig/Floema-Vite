@@ -1,19 +1,57 @@
-@import "./utils/variables";
-@import "./utils/functions";
-@import "./utils/mixins";
-@import "./utils/responsive";
-@import "./utils/vendors";
+@import './base/reset';
 
-@import "./base/reset";
-@import "./base/base";
-@import "./base/fonts";
+// ------------------------------------
+// Utils
+// ------------------------------------
 
-@import './components/canvas';
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/tweakpane';
+@import './utils/vendors';
+
+// ------------------------------------
+// Shared
+// ------------------------------------
+
+@import './shared/global';
+@import './shared/descriptions';
+@import './shared/links';
+@import './shared/pages';
+@import './shared/titles';
+@import './shared/vertical-titles';
+
+// ------------------------------------
+// Base
+// ------------------------------------
+
+@import './base/fonts';
+@import './base/base';
+
+// ------------------------------------
+// Components
+// ------------------------------------
+
 @import './components/preloader';
-@import './components/cursor';
-@import './components/navigation';
-@import './components/footer';
-@import './components/grid-debugger';
+@import './components/transition';
 
-@import './pages/home';
-@import './pages/about';
+// ------------------------------------
+// Layout
+// ------------------------------------
+
+@import './layout/navigation';
+
+// ------------------------------------
+// Pages
+// ------------------------------------
+
+@import './pages/about/about';
+@import './pages/about/content';
+@import './pages/about/gallery';
+@import './pages/about/highlight';
+
+@import './pages/collections/collections';
+
+@import './pages/details/details';
+
+@import './pages/home/home';

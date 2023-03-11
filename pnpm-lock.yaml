@@ -21,6 +21,7 @@ specifiers:
   sharp: ^0.30.4
   standard: ^16.0.4
   svgstore: ^3.0.1
+  tweakpane: ^3.1.6
   url: ^0.11.0
   vite: ^4.1.1
   vite-plugin-glsl: ^0.0.9
@@ -49,6 +50,7 @@ dependencies:
   sharp: 0.30.7
   standard: 16.0.4
   svgstore: 3.0.1
+  tweakpane: 3.1.6
   url: 0.11.0
 
 devDependencies:
@@ -6021,6 +6023,10 @@ packages:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
       safe-buffer: 5.2.1
+    dev: false
+
+  /tweakpane/3.1.6:
+    resolution: {integrity: sha512-A67JCgWyovee5AF5W5PclXGx6VSJxJ6uWykVTVrr4XzhANGuZhe9szPbeuBQ3r6begaw5i0WDAXmK7EafgM+mQ==}
     dev: false
 
   /type-check/0.4.0:
