@@ -1,125 +1,134 @@
-import each from 'lodash/each'
+import each from 'lodash/each';
 
-export function split ({ element, expression = ' ', append = true }) {
-  const words = splitText(element.innerHTML.toString().trim(), expression)
+export function split({ element, expression = ' ', append = true }) {
+  const words = splitText(element.innerHTML.toString().trim(), expression);
 
-  let innerHTML = ''
+  let innerHTML = '';
 
   each(words, line => {
     if (line.indexOf('<br>') > -1) {
-      const lines = line.split('<br>')
+      const lines = line.split('<br>');
 
       each(lines, (line, index) => {
-        innerHTML += (index > 0) ? '<br>' + parseLine(line) : parseLine(line)
-      })
+        innerHTML += index > 0 ? '<br>' + parseLine(line) : parseLine(line);
+      });
     } else {
-      innerHTML += parseLine(line)
+      innerHTML += parseLine(line);
     }
-  })
+  });
 
-  element.innerHTML = innerHTML
+  element.innerHTML = innerHTML;
 
-  const spans = element.querySelectorAll('span')
+  const spans = element.querySelectorAll('span');
 
   if (append) {
     each(spans, span => {
-      const isSingleLetter = span.textContent.length === 1
-      const isNotEmpty = span.innerHTML.trim() !== ''
-      const isNotAndCharacter = span.textContent !== '&'
-      const isNotDashCharacter = span.textContent !== '-'
+      const isSingleLetter = span.textContent.length === 1;
+      const isNotEmpty = span.innerHTML.trim() !== '';
+      const isNotAndCharacter = span.textContent !== '&';
+      const isNotDashCharacter = span.textContent !== '-';
 
-      if (isSingleLetter && isNotEmpty && isNotAndCharacter && isNotDashCharacter) {
-        span.innerHTML = `${span.textContent}&nbsp;`
+      if (
+        isSingleLetter &&
+        isNotEmpty &&
+        isNotAndCharacter &&
+        isNotDashCharacter
+      ) {
+        span.innerHTML = `${span.textContent}&nbsp;`;
       }
-    })
+    });
   }
 
-  return spans
+  return spans;
 }
 
-export function calculate (spans) {
-  const lines = []
-  let words = []
+export function calculate(spans) {
+  const lines = [];
+  let words = [];
 
-  let position = spans[0].offsetTop
+  let position = spans[0].offsetTop;
 
   each(spans, (span, index) => {
     if (span.offsetTop === position) {
-      words.push(span)
+      words.push(span);
     }
 
     if (span.offsetTop !== position) {
-      lines.push(words)
+      lines.push(words);
 
-      words = []
-      words.push(span)
+      words = [];
+      words.push(span);
 
-      position = span.offsetTop
+      position = span.offsetTop;
     }
 
     if (index + 1 === spans.length) {
-      lines.push(words)
+      lines.push(words);
     }
-  })
+  });
 
-  return lines
+  return lines;
 }
 
-function splitText (text, expression) {
-  const splits = text.split('<br>')
+function splitText(text, expression) {
+  const splits = text.split('<br>');
 
-  let words = []
+  let words = [];
 
   each(splits, (item, index) => {
     if (index > 0) {
-      words.push('<br>')
+      words.push('<br>');
     }
 
-    words = words.concat(item.split(expression))
+    words = words.concat(item.split(expression));
 
-    let isLink = false
-    let link = ''
+    let isLink = false;
+    let link = '';
 
-    const innerHTML = []
+    const innerHTML = [];
 
     each(words, word => {
       if (!isLink && (word.includes('<a') || word.includes('<strong'))) {
-        link = ''
+        link = '';
 
-        isLink = true
+        isLink = true;
       }
 
       if (isLink) {
-        link += ` ${word}`
+        link += ` ${word}`;
       }
 
       if (isLink && (word.includes('/a>') || word.includes('/strong>'))) {
-        innerHTML.push(link)
+        innerHTML.push(link);
 
-        link = ''
+        link = '';
       }
 
       if (!isLink && link === '') {
-        innerHTML.push(word)
+        innerHTML.push(word);
       }
 
       if (isLink && (word.includes('/a>') || word.includes('/strong>'))) {
-        isLink = false
+        isLink = false;
       }
-    })
+    });
 
-    words = innerHTML
-  })
+    words = innerHTML;
+  });
 
-  return words
+  return words;
 }
 
-function parseLine (line) {
+function parseLine(line) {
   if (line === '') {
-    return line
+    return line;
   } else if (line === ' ') {
-    return '&nbsp;'
+    return '&nbsp;';
   } else {
-    return (line === '<br>') ? '<br>' : `<span>${line}</span>` + ((line.length > 1) ? ' ' : '')
+    line = line.trim();
+
+    return line === '<br>'
+      ? '<br>'
+      : `<span>${line}</span>` + (line.length > 1 ? ' ' : '');
   }
 }

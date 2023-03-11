@@ -12,8 +12,6 @@ export default class Debug {
 
     this.gui = new Pane();
 
-    console.log('yes');
-
     this.gui.addInput(PARAMS, 'factor');
     this.gui.addInput(PARAMS, 'title');
     this.gui.addInput(PARAMS, 'color');
