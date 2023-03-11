@@ -1,10 +1,18 @@
 @import './base/reset';
 
+// ------------------------------------
+// Utils
+// ------------------------------------
+
 @import './utils/variables';
 @import './utils/functions';
 @import './utils/mixins';
+@import './utils/tweakpane';
 @import './utils/vendors';
-@import './utils/responsive';
+
+// ------------------------------------
+// Shared
+// ------------------------------------
 
 @import './shared/global';
 @import './shared/descriptions';
@@ -13,13 +21,29 @@
 @import './shared/titles';
 @import './shared/vertical-titles';
 
+// ------------------------------------
+// Base
+// ------------------------------------
+
 @import './base/fonts';
 @import './base/base';
+
+// ------------------------------------
+// Components
+// ------------------------------------
 
 @import './components/preloader';
 @import './components/transition';
 
+// ------------------------------------
+// Layout
+// ------------------------------------
+
 @import './layout/navigation';
+
+// ------------------------------------
+// Pages
+// ------------------------------------
 
 @import './pages/about/about';
 @import './pages/about/content';

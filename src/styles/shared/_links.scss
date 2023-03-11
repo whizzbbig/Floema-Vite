@@ -28,7 +28,6 @@
 
 %link {
   @extend %link__wrapper;
-
   display: inline-block;
 
   &:after {
@@ -45,7 +44,6 @@
 
 %link--hidden {
   @extend %link__wrapper;
-
   display: inline-block;
 
   &:after {

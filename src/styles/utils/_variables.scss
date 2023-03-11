@@ -29,9 +29,17 @@ $_easings: (
   ease-in-out: cubic-bezier(0.77, 0, 0.175, 1),
 );
 
+$breakpoints: (
+  'phone': 768px,
+  'tablet': 1024px,
+  'desktop': 1920px,
+) !default;
+
 @forward './functions' with (
   $_z-indexes: $_z-indexes,
   $_colors: $_colors,
   $_constants: $_constants,
   $_easings: $_easings
 );
+
+@import 'node_modules/include-media/dist/include-media';

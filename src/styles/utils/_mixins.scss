@@ -41,3 +41,40 @@
     }
   }
 }
+
+@mixin has-hover() {
+  @media (hover: hover) {
+    @content;
+  }
+}
+@mixin has-touch() {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+@mixin hover-and-touch() {
+  @include has-hover {
+    &:hover {
+      @content;
+    }
+  }
+  @include has-touch {
+    &:active {
+      @content;
+    }
+  }
+}
+@mixin hover() {
+  @include has-hover {
+    &:hover {
+      @content;
+    }
+  }
+}
+@mixin touch() {
+  @include has-touch {
+    &:active {
+      @content;
+    }
+  }
+}
