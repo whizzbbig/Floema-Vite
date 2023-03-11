@@ -13,20 +13,9 @@ export default class Scrolling {
       touchMultiplier: 2,
       infinite: false,
     });
-
-    //get scroll value
-    this.lenis.on(
-      'scroll',
-      ({ scroll, limit, velocity, direction, progress }) => {
-        return;
-      }
-    );
-
-    requestAnimationFrame(e => this.update(e));
   }
 
   update(e) {
     this.lenis.raf(e);
-    requestAnimationFrame(e => this.update(e));
   }
 }

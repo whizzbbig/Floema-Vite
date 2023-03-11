@@ -1,8 +1,5 @@
 import GSAP from 'gsap';
-import Animation from 'classes/Animation';
-
-import { IMAGE as ease } from 'utils/easings';
-import { split } from 'utils/text';
+import Animation from '@/classes/Animation';
 
 export default class extends Animation {
   constructor({ element, elements }) {

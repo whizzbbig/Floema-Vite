@@ -1,8 +1,7 @@
 import '../styles/index.scss';
 
-import Cursor from './components/Cursor';
-import GridDebugger from './components/GridDebugger';
-// import Navgation from './components/Navgation';
+import Scrolling from './components/Scrolling';
+// import Navgation from './components/Navigation';
 // import Preloader from './components/Preloader';
 
 import AboutScene from './scenes/About';
@@ -21,10 +20,7 @@ const App = new Application();
 
 const components = [
   {
-    component: Cursor,
-  },
-  {
-    component: GridDebugger,
+    component: Scrolling,
   },
 ];
 

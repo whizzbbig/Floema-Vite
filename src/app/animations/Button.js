@@ -1,9 +1,9 @@
 import GSAP from 'gsap';
 
-import Component from 'classes/Component';
+import Component from '@/classes/Component';
 
-import { DEFAULT as ease } from 'utils/easings';
-import { split } from 'utils/text';
+import { DEFAULT as ease } from '@/utils/easings';
+import { split } from '@/utils/text';
 
 export default class Button extends Component {
   constructor({ element }) {

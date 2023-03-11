@@ -3,10 +3,10 @@ import Prefix from 'prefix';
 
 import each from 'lodash/each';
 
-import Component from 'classes/Component';
+import Component from '@/classes/Component';
 
-import { getOffset } from 'utils/dom';
-import { lerp } from 'utils/math';
+import { getOffset } from '@/utils/dom';
+import { lerp } from '@/utils/math';
 
 export default class extends Component {
   constructor({ element, elements, index }) {

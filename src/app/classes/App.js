@@ -4,7 +4,7 @@ import Stats from 'stats.js';
 import AppLink from './AppLink';
 import AppSprites from './AppSprites';
 
-import Canvas from '@/canvas';
+// import Canvas from '@/canvas';
 
 export default class App {
   constructor() {
@@ -331,19 +331,17 @@ export default class App {
   /**
    * Loop.
    */
-  update() {
-    if (this.stats) {
-      this.stats.begin();
-    }
+  update(e) {
+    if (this.stats) this.stats.begin();
 
-    this.page?.update?.();
+    if (this.page && this.page.update) this.page.update();
 
-    this.components.forEach(component => component.update?.());
+    this.components.forEach(component => {
+      if (component.update) component.update(e);
+    });
 
-    if (this.stats) {
-      this.stats.end();
-    }
+    if (this.stats) this.stats.end();
 
-    this.frame = window.requestAnimationFrame(this.update);
+    window.requestAnimationFrame(this.update);
   }
 }
