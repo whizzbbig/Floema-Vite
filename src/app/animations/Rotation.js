@@ -1,4 +1,4 @@
-import Animation from 'classes/Animation';
+import Animation from '@/classes/Animation';
 
 export default class extends Animation {
   constructor({ element }) {

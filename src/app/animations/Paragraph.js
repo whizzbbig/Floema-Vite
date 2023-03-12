@@ -1,9 +1,9 @@
 import each from 'lodash/each';
 
-import Animation from 'classes/Animation';
+import Animation from '@/classes/Animation';
 
-import { CSS } from 'utils/easings';
-import { calculate, split } from 'utils/text';
+import { CSS } from '@/utils/easings';
+import { calculate, split } from '@/utils/text';
 
 export default class extends Animation {
   constructor({ element }) {
