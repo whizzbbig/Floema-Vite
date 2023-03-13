@@ -7,9 +7,13 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "lint": "standard"
+    "lint": "eslint . --ext .js | xargs prettier --write"
   },
   "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4",
     "vite": "^4.1.1",
     "vite-plugin-glsl": "^0.0.9",
     "vite-plugin-handlebars": "^1.6.0",
