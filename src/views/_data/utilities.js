@@ -1,4 +1,4 @@
-function Numbers(index) {
+function toNumbers(index) {
   return index == 0
     ? 'One'
     : index == 1
@@ -10,4 +10,4 @@ function Numbers(index) {
     : '';
 }
 
-module.exports = { Numbers };
+module.exports = { toNumbers };

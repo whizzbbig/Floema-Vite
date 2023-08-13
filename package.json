@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "eleventy --serve --incremental",
-    "build": "eleventy",
-    "lint": "eslint . --ext .js | xargs prettier --write"
+    "clean": "rm -rf _site",
+    "dev": "npm run clean && eleventy --serve",
+    "build": "npm run clean && eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

@@ -3,9 +3,9 @@ meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
 base(href="/")
 
-title=data.meta.data.title
+title=prismic.meta.data.title
 
-meta(name="description" content=data.meta.data.description)
+meta(name="description" content=prismic.meta.data.description)
 
 link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
 link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
@@ -16,11 +16,11 @@ meta(name="msapplication-TileColor" content="#f4d8cc")
 meta(name="theme-color" content="#f4d8cc")
 
 meta(property="og:type" content="website")
-meta(property="og:title" content=data.meta.data.title)
-meta(property="og:description" content=data.meta.data.description)
-meta(property="og:image" content=data.meta.data.image ? data.meta.data.image.url : '')
+meta(property="og:title" content=prismic.meta.data.title)
+meta(property="og:description" content=prismic.meta.data.description)
+meta(property="og:image" content=prismic.meta.data.image ? prismic.meta.data.image.url : '')
 
 meta(name="twitter:card" content="summary_large_image")
-meta(name="twitter:title" content=data.meta.data.title)
-meta(name="twitter:description" content=data.meta.data.description)
-meta(name="twitter:image" content=data.meta.data.image ? data.meta.data.image.url : '')
+meta(name="twitter:title" content=prismic.meta.data.title)
+meta(name="twitter:description" content=prismic.meta.data.description)
+meta(name="twitter:image" content=prismic.meta.data.image ? prismic.meta.data.image.url : '')

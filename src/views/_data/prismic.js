@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+const prismicH = require('@prismicio/helpers');
 const prismic = require('@prismicio/client');
 const fetch = require('node-fetch');
 
@@ -29,9 +32,8 @@ async function fetchPrismicData() {
     preloader,
     collections,
     products,
+    ...prismicH,
   };
-
-  console.log(data);
 
   return data;
 }

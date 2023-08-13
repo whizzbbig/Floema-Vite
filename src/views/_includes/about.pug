@@ -2,11 +2,11 @@
   .about__wrapper
     section.about__gallery
       .about__gallery__wrapper
-        each media in data.about.data.gallery
+        each media in prismic.about.data.gallery
           figure.about__gallery__media
             img.about__gallery__media__image(alt=media.image.alt data-src=media.image.url)
 
-    each section, index in data.about.data.body
+    each section, index in prismic.about.data.body
       if section.slice_type == 'title'
         h2.about__title(data-animation="paragraph")!=section.primary.text.replace(/\n/g, '<br>')
 
@@ -46,6 +46,6 @@
                 img.about__gallery__media__image(alt=media.image.alt data-src=media.image.url)
 
     footer.about__footer
-      .about__footer__copyright!=data.about.data.footer_copyright
-
-      .about__footer__credits!=prismicH.isFilled.richText(data.about.data.footer_credits)
+      //- .about__footer__copyright!=data.about.data.footer_copyright
+      .about__footer__copyright= test
+      .about__footer__credits!=prismicH.isFilled.richText(prismic.about.data.footer_credits)

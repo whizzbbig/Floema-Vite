@@ -1,12 +1,6 @@
-require('dotenv').config();
-
 const path = require('path');
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
 const glslifyPlugin = require('vite-plugin-glslify').default;
-const prismicH = require('@prismicio/helpers');
-
-const fetchPrismicData = require('./config/prismic');
-const { Numbers } = require('./config/globals');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyVitePlugin, {
@@ -30,11 +24,10 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  eleventyConfig.addGlobalData('Numbers', Numbers);
-  eleventyConfig.addGlobalData('data', fetchPrismicData);
-  eleventyConfig.addGlobalData('prismicH', prismicH);
+  eleventyConfig.addPassthroughCopy('src/app');
+  eleventyConfig.addPassthroughCopy('src/fonts');
+  eleventyConfig.addPassthroughCopy('src/styles');
 
-  eleventyConfig.addPassthroughCopy('src');
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
 
   return {
