@@ -15,7 +15,7 @@ import Preloader from '@components/Preloader';
 import Transition from '@components/Transition';
 
 import About from '@pages/About';
-// import Collections from '@pages/Collections';
+// // import Collections from '@pages/Collections';
 import Home from '@pages/Home';
 
 class App {

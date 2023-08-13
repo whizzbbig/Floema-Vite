@@ -10,6 +10,7 @@ yarn.lock
 
 node_modules
 dist
+_site
 dist-ssr
 *.local
 
