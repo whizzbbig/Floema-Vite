@@ -1,4 +1,4 @@
-function toNumbers(index) {
+const toNumbers = index => {
   return index == 0
     ? 'One'
     : index == 1
@@ -8,6 +8,6 @@ function toNumbers(index) {
     : index == 3
     ? 'Four'
     : '';
-}
+};
 
 module.exports = { toNumbers };

@@ -1,17 +1,15 @@
-block variables
-
 doctype html
 html(lang="en")
   head
-    include ./_includes/partials/head
+    include _includes/partials/head.pug
 
   body
-    include ./_includes/partials/navigation
-    include ./_includes/partials/preloader
-    include ./_includes/home
-    include ./_includes/about
+    include _includes/partials/navigation.pug
+    include _includes/partials/preloader.pug
+
+    // Layouts
+    include _includes/layouts/home.pug
+    include _includes/layouts/about.pug
 
   script(type="module", src="/src/app/index.js")
-
-
 
