@@ -16,7 +16,7 @@
             .about__content__box
               p.about__content__label(data-animation="paragraph")!=section.primary.label
 
-              .about__content__description(data-animation="paragraph")!=prismicH.isFilled.richText(section.primary.description)
+              .about__content__description(data-animation="paragraph")!=prismic.isFilled.richText(section.primary.description)
 
             figure.about__content__media(data-animation="parallax")
               img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
@@ -46,6 +46,5 @@
                 img.about__gallery__media__image(alt=media.image.alt data-src=media.image.url)
 
     footer.about__footer
-      //- .about__footer__copyright!=data.about.data.footer_copyright
-      .about__footer__copyright= test
-      .about__footer__credits!=prismicH.isFilled.richText(prismic.about.data.footer_credits)
+      .about__footer__copyright!=prismic.about.data.footer_copyright
+      .about__footer__credits!=prismic.isFilled.richText(prismic.about.data.footer_credits)
