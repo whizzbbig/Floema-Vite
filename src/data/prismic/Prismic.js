@@ -9,8 +9,7 @@ export default class PrismicHook {
     const { VITE_PRISMIC_REPOSITORY, VITE_PRISMIC_ACCESS_TOKEN } = process.env;
 
     const accessToken = VITE_PRISMIC_ACCESS_TOKEN;
-    const endpoint = prismic.getEndpoint(VITE_PRISMIC_REPOSITORY);
-    const client = prismic.createClient(endpoint, {
+    const client = prismic.createClient(VITE_PRISMIC_REPOSITORY, {
       accessToken,
       fetch,
     });
@@ -27,7 +26,7 @@ export default class PrismicHook {
 
     // console.log(preloader);
 
-    fs.writeFileSync('src/pages/public/products.json', JSON.stringify(products), 'utf8') // prettier-ignore
+    fs.writeFileSync('src/pages/public/products.json', JSON.stringify(products), 'utf8'); // prettier-ignore
 
     const collections = collectionsList.data.list.map(item => {
       item.collection = collection.find(({ uid }) => uid === item.collection.uid); // prettier-ignore

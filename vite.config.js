@@ -50,7 +50,7 @@ export default async ({ mode }) => {
     },
 
     plugins: [
-      glsl.default(),
+      glsl(),
 
       handlebars({
         context() {
