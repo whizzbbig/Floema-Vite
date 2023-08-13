@@ -1,8 +1,8 @@
 import Prefix from 'prefix';
 
-import { BREAKPOINT_TABLET } from '@/utils/breakpoints';
-import { getOffset } from '@/utils/dom';
-import { clamp, map } from '@/utils/math';
+import { BREAKPOINT_TABLET } from '@utils/breakpoints';
+import { getOffset } from '@utils/dom';
+import { clamp, map } from '@utils/math';
 
 export default class {
   constructor({ element }) {
@@ -54,8 +54,8 @@ export default class {
           -this.offset.height,
           innerHeight,
           this.amount,
-          -this.amount
-        )
+          -this.amount,
+        ),
       );
       this.scale = clamp(
         1,
@@ -65,8 +65,8 @@ export default class {
           -this.offset.height,
           innerHeight,
           1,
-          1.15
-        )
+          1.15,
+        ),
       );
 
       this.media.style[

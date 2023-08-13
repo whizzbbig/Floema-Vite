@@ -1,111 +1,270 @@
-import Component from './Component';
+import AutoBind from 'auto-bind';
+import EventEmitter from 'events';
+import GSAP from 'gsap';
+import Prefix from 'prefix';
 
-import map from 'lodash/map';
+import Paragraph from '@animations/Paragraph';
 
-// import Title from '../animations/Title';
-// import Paragraph from '../animations/Paragraph';
-// import Label from '../animations/Label';
+import AsyncLoad from '@classes/AsyncLoad';
+import Detection from '@classes/Detection';
 
-export default class Page extends Component {
-  constructor({ element, elements }) {
-    super({
-      autoMount: false,
+import each from 'lodash/each';
+
+import { mapEach } from '@utils/dom';
+import { clamp, lerp } from '@utils/math';
+
+export default class Page extends EventEmitter {
+  constructor({ classes, element, elements, isScrollable = true }) {
+    super();
+
+    AutoBind(this);
+
+    this.classes = {
+      ...classes,
+    };
+
+    this.selectors = {
       element,
       elements: {
+        preloaders: '[data-src]',
+
+        animationsParagraphs: '[data-animation="paragraph"]',
+
+        footer: '.footer',
+        footerCredits: '.footer__credits',
+
         ...elements,
-        images: 'img',
-        // animationsParagraph: '[data-animation="paragraph"]',
-        // animationsTitle: '[data-animation="title"]',
-        // animationsLabel: '[data-animation="label"]',
       },
-    });
+    };
+
+    this.scroll = {
+      ease: 0.07,
+      position: 0,
+      current: 0,
+      target: 0,
+      limit: 0,
+    };
+
+    this.isScrollable = isScrollable;
+
+    this.transformPrefix = Prefix('transform');
+
+    this.create();
   }
 
-  beforeShow() {
-    if (this.elements.images) {
-      if (!this.elements.images.length) {
-        this.elements.images = [this.elements.images];
-      }
+  create() {
+    this.animations = [];
 
-      this.elements.images.forEach(image => {
-        image.setAttribute('src', image.getAttribute('data-src'));
-      });
+    this.element = document.querySelector(this.selectors.element);
+    this.elements = {};
+
+    each(this.selectors.elements, (selector, key) => {
+      if (
+        selector instanceof window.HTMLElement ||
+        selector instanceof window.NodeList
+      ) {
+        this.elements[key] = selector;
+      } else if (Array.isArray(selector)) {
+        this.elements[key] = selector;
+      } else {
+        this.elements[key] = this.element.querySelectorAll(selector);
+
+        if (this.elements[key].length === 0) {
+          this.elements[key] = null;
+        } else if (this.elements[key].length === 1) {
+          this.elements[key] = this.element.querySelector(selector);
+        }
+      }
+    });
+
+    if (this.isScrollable) {
+      this.scroll = {
+        ease: 0.07,
+        position: 0,
+        current: 0,
+        target: 0,
+        limit: this.elements.wrapper.clientHeight - window.innerHeight,
+      };
     }
+
+    this.createAnimations();
+    this.createObserver();
+    this.createPreloaders();
   }
 
-  //   createAnimations() {
-  //     this.animations = [];
+  /**
+   * Animations.
+   */
+  createAnimations() {
+    /**
+     * Paragraphs.
+     */
+    this.animationsParagraphs = mapEach(
+      this.elements.animationsParagraphs,
+      element => {
+        return new Paragraph({ element });
+      },
+    );
 
-  //     // Title
+    this.animations.push(...this.animationsParagraphs);
+  }
 
-  //     this.animationsTitle = map(this.elements.animationsTitle, element => {
-  //       return new Title({
-  //         element,
-  //       });
-  //     });
-
-  //     this.animations.push(...this.animationsTitle);
-
-  //     // Paragraphs
-
-  //     this.animationsParagraph = map(
-  //       this.elements.animationsParagraph,
-  //       element => {
-  //         return new Paragraph({
-  //           element,
-  //         });
-  //       }
-  //     );
-
-  //     this.animations.push(...this.animationsParagraph);
-
-  //     // Label
-
-  //     this.animationsLabel = map(this.elements.animationsLabel, element => {
-  //       return new Label({
-  //         element,
-  //       });
-  //     });
-
-  //     this.animations.push(...this.animationsLabel);
-  //   }
-
-  show(animation) {
-    this.beforeShow();
-    // this.createAnimations();
-
-    return new Promise(async resolve => {
-      if (animation) {
-        await animation;
-      } else {
-        console.warn(`Page doesn't have animation in set.`);
+  /**
+   * Observer.
+   */
+  createObserver() {
+    this.observer = new window.ResizeObserver(entries => {
+      for (const entry of entries) {
+        // eslint-disable-line
+        window.requestAnimationFrame(_ => {
+          this.scroll.limit =
+            this.elements.wrapper.clientHeight - window.innerHeight;
+        });
       }
+    });
 
-      this.afterShow();
+    this.observer.observe(this.elements.wrapper);
+  }
 
-      resolve();
+  /**
+   * Footer.
+   */
+  createPreloaders() {
+    this.preloaders = mapEach(this.elements.preloaders, element => {
+      return new AsyncLoad({
+        element,
+      });
     });
   }
 
-  afterShow() {}
+  /**
+   * Animations.
+   */
+  reset() {
+    this.scroll = {
+      ease: 0.07,
+      position: 0,
+      current: 0,
+      target: 0,
+      limit: 0,
+    };
+  }
 
-  beforeHide() {}
+  set(value) {
+    this.scroll.current = this.scroll.target = this.scroll.last = value;
 
-  hide(animation) {
-    this.beforeHide();
+    this.transform(this.elements.wrapper, this.scroll.current);
+  }
 
-    return new Promise(async resolve => {
-      if (animation) {
-        await animation;
-      } else {
-        console.warn(`Page doesn't have animation out set.`);
-      }
+  show(url) {
+    this.reset();
 
-      this.afterHide();
+    this.isVisible = true;
 
-      resolve();
+    this.addEventListeners();
+
+    GSAP.set(document.documentElement, {
+      backgroundColor: this.element.getAttribute('data-background'),
+      color: this.element.getAttribute('data-color'),
+    });
+
+    return Promise.resolve();
+  }
+
+  hide(url) {
+    this.isVisible = false;
+
+    this.removeEventListeners();
+
+    return Promise.resolve();
+  }
+
+  transform(element, y) {
+    element.style[this.transformPrefix] = `translate3d(0, ${-Math.round(
+      y,
+    )}px, 0)`;
+  }
+
+  /**
+   * Events.
+   */
+  onResize() {
+    if (!this.elements.wrapper) return;
+
+    window.requestAnimationFrame(_ => {
+      this.scroll.limit =
+        this.elements.wrapper.clientHeight - window.innerHeight;
+
+      each(this.animations, animation => {
+        animation.onResize && animation.onResize();
+      });
     });
   }
 
-  afterHide() {}
+  onTouchDown(event) {
+    if (!Detection.isPhone()) return;
+
+    this.isDown = true;
+
+    this.scroll.position = this.scroll.current;
+    this.start = event.touches ? event.touches[0].clientY : event.clientY;
+  }
+
+  onTouchMove(event) {
+    if (!Detection.isPhone() || !this.isDown) return;
+
+    const y = event.touches ? event.touches[0].clientY : event.clientY;
+    const distance = (this.start - y) * 3;
+
+    this.scroll.target = this.scroll.position + distance;
+  }
+
+  onTouchUp(event) {
+    if (!Detection.isPhone()) return;
+
+    this.isDown = false;
+  }
+
+  onWheel(normalized) {
+    const speed = normalized.pixelY;
+
+    this.scroll.target += speed;
+
+    return speed;
+  }
+
+  /**
+   * Listeners.
+   */
+  addEventListeners() {}
+
+  removeEventListeners() {}
+
+  /**
+   * Frames.
+   */
+  update() {
+    this.scroll.target = clamp(0, this.scroll.limit, this.scroll.target);
+
+    this.scroll.current = lerp(
+      this.scroll.current,
+      this.scroll.target,
+      this.scroll.ease,
+    );
+    this.scroll.current = Math.floor(this.scroll.current);
+
+    if (this.scroll.current < 0.1) {
+      this.scroll.current = 0;
+    }
+
+    if (this.elements.wrapper) {
+      this.transform(this.elements.wrapper, this.scroll.current);
+    }
+
+    each(this.animations, animation => {
+      animation.update && animation.update(this.scroll);
+    });
+
+    this.scroll.last = this.scroll.current;
+  }
 }

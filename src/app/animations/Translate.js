@@ -1,8 +1,8 @@
 import Prefix from 'prefix';
 
-import { BREAKPOINT_TABLET } from '@/utils/breakpoints';
-import { getOffset } from '@/utils/dom';
-import { map } from '@/utils/math';
+import { BREAKPOINT_TABLET } from '@utils/breakpoints';
+import { getOffset } from '@utils/dom';
+import { map } from '@utils/math';
 
 export default class {
   constructor({ element }) {
@@ -47,7 +47,7 @@ export default class {
         -this.offset.height,
         innerHeight,
         this.amount,
-        -this.amount
+        -this.amount,
       );
 
       if (this.direction === 'left') {

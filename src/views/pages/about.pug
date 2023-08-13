@@ -1,0 +1,51 @@
+.about(data-background="#B2B8C3" data-color="#37384C")
+  .about__wrapper
+    section.about__gallery
+      .about__gallery__wrapper
+        each media in data.about.data.gallery
+          figure.about__gallery__media
+            img.about__gallery__media__image(alt=media.image.alt data-src=media.image.url)
+
+    each section, index in data.about.data.body
+      if section.slice_type == 'title'
+        h2.about__title(data-animation="paragraph")!=section.primary.text.replace(/\n/g, '<br>')
+
+      if section.slice_type == 'content'
+        section.about__content(class=`${section.primary.type === 'Left' ? 'about__content--left' : 'about__content--right'}`)
+          .about__content__wrapper
+            .about__content__box
+              p.about__content__label(data-animation="paragraph")!=section.primary.label
+
+              //- .about__content__description(data-animation="paragraph")!=PrismicDOM.RichText.asHtml(section.primary.description)
+
+            figure.about__content__media(data-animation="parallax")
+              img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
+
+      if section.slice_type == 'highlight'
+        section.about__highlight
+          .about__highlight__wrapper
+            a.about__highlight__link(
+              href=section.primary.link.url
+              target="_blank"
+            )
+              if section.primary.label
+                p.about__highlight__label(data-animation="paragraph")=section.primary.label
+
+              h3.about__highlight__title(data-animation="highlight")=section.primary.title
+
+            .about__highlight__medias
+              each media, mediaIndex in section.items
+                figure.about__highlight__media(data-animation="parallax")
+                  img.about__highlight__media__image(alt=media.image.alt data-src=media.image.url)
+
+      if section.slice_type == 'gallery'
+        section.about__gallery
+          .about__gallery__wrapper
+            each media in section.items
+              figure.about__gallery__media
+                img.about__gallery__media__image(alt=media.image.alt data-src=media.image.url)
+
+    footer.about__footer
+      .about__footer__copyright!=data.about.data.footer_copyright
+
+      //- .about__footer__credits!=PrismicDOM.RichText.asHtml(data.about.data.footer_credits)

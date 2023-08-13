@@ -1,86 +1,50 @@
-import AutoBind from 'auto-bind'
-import { createNanoEvents } from 'nanoevents'
+import AutoBind from "auto-bind";
+import EventEmitter from "events";
 
-export default class {
-  constructor ({ autoListeners = true, autoMount = true, classes, element, elements, id } = {}) {
-    AutoBind(this)
+import each from "lodash/each";
 
-    this.autoListeners = autoListeners
-    this.autoMount = autoMount
-    this.classes = classes
-    this.selector = element
-    this.selectors = elements
-    this.id = id
+export default class Component extends EventEmitter {
+	constructor({ classes, element, elements }) {
+		super();
 
-    if (this.autoMount) {
-      this.create()
-    }
-  }
+		AutoBind(this);
 
-  create () {
-    this.initElement(this.selector)
-    this.initElements(this.selectors)
-    this.initEmitter()
+		this.classes = classes;
+		this.selector = element;
+		this.selectorChildren = {
+			...elements,
+		};
 
-    if (this.autoListeners) {
-      this.addEventListeners()
-    }
-  }
+		this.create();
 
-  initElement (selector) {
-    if (!selector) {
-      // throw 'Selector is required for Component!';
-      return
-    }
+		this.addEventListeners();
+	}
 
-    if (selector instanceof window.HTMLElement) {
-      this.element = selector
-    } else {
-      this.element = document.querySelector(selector)
-    }
-  }
+	create() {
+		if (this.selector instanceof window.HTMLElement) {
+			this.element = this.selector;
+		} else {
+			this.element = document.querySelector(this.selector);
+		}
 
-  initElements (selectors) {
-    this.elements = {}
+		this.elements = {};
 
-    for (const key in selectors) {
-      const selector = selectors[key]
+		each(this.selectorChildren, (entry, key) => {
+			if (entry instanceof window.HTMLElement || entry instanceof window.NodeList || Array.isArray(entry)) {
+				this.elements[key] = entry;
+			} else {
+				this.elements[key] = this.element.querySelectorAll(entry);
 
-      if (selector === window) {
-        this.elements[key] = window
-      } else if (selector instanceof window.HTMLElement) {
-        this.elements[key] = selector
-      } else {
-        this.elements[key] = document.querySelectorAll(selector)
+				if (this.elements[key].length === 0) {
+					this.elements[key] = null;
+				} else if (this.elements[key].length === 1) {
+					this.elements[key] = this.element.querySelector(entry);
+				}
+			}
+		});
+	}
 
-        if (this.elements[key].length === 0) {
-          this.elements[key] = null
-        } else if (this.elements[key].length === 1) {
-          this.elements[key] = this.elements[key][0]
-        } else {
+	addEventListeners() {}
 
-        }
-      }
-    }
-  }
-
-  initEmitter () {
-    this.emitter = createNanoEvents()
-  }
-
-  on (event, callback) {
-    return this.emitter.on(event, callback)
-  }
-
-  addEventListeners () {
-
-  }
-
-  removeEventListeners () {
-
-  }
-
-  destroy () {
-    this.removeEventListeners()
-  }
+	removeEventListeners() {}
 }

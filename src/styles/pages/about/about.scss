@@ -1,0 +1,54 @@
+.about {
+  @extend %page;
+
+  // background: $color-cadet-blue;
+  // color: $color-bright-gray;
+
+  &--active {
+    @extend %page--active;
+  }
+}
+
+.about__wrapper {
+  padding-top: 10rem;
+}
+
+.about__title {
+  @extend %title-110;
+
+  margin: auto;
+  max-width: 140rem;
+  text-align: center;
+
+  @include media('<phone') {
+    max-width: 67.7rem;
+  }
+}
+
+.about__footer {
+  bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  left: 4rem;
+  position: absolute;
+  right: 4rem;
+  text-transform: uppercase;
+}
+
+.about__footer__copyright {
+
+}
+
+.about__footer__credits {
+  a {
+    @extend %link--hidden;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+}

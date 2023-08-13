@@ -1,77 +1,79 @@
-import { fileURLToPath, URL } from 'url';
-import { resolve } from 'path';
-import { defineConfig, loadEnv } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
-
+/* eslint-disable no-undef */
+import { defineConfig } from 'vite';
 import glsl from 'vite-plugin-glsl';
-import handlebars from 'vite-plugin-handlebars';
-import { handlebarsHelpers } from './src/data/handlebars/helpers.js';
+import { resolve } from 'path';
+import vitePluginPug from './plugins/vite-plugin-pug';
 
-import Prismic from './src/data/prismic/Prismic.js';
-import PrismicMedias from './src/data/prismic/PrismicMedias.js';
-
-import SpriteHelper from './src/data/sprites/helper.js';
-import { DynamicRouterBuilder } from './src/data/router/router.js';
-
-export default async ({ mode }) => {
-  process.env = {
-    ...process.env,
-    ...loadEnv(mode, process.cwd()),
-  };
-
-  // Prismic
-  const prismic = new Prismic();
-  const results = await prismic.getData();
-
-  const prismicMedias = new PrismicMedias(results);
-  await prismicMedias.generate();
-
-  // SVG Sprite
-  const spriteHelper = new SpriteHelper('src/sprites');
-  await spriteHelper.generate();
-
-  // Static Pages
-  const input = {
-    about: resolve('src/pages/about/index.html'),
-    collections: resolve('src/pages/collections/index.html'),
-    main: resolve('src/pages/index.html'),
-  };
-
-  // Dynamic Router
-  // new DynamicRouterBuilder(results., '').generate()
-
+export default () => {
   return defineConfig({
-    root: 'src/pages',
+    root: 'src',
+    publicDir: '../public',
+
     build: {
-      outDir: '../../dist',
+      outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
-        input,
+        input: {
+          main: resolve(__dirname, 'src', 'index.pug'),
+        },
       },
     },
 
-    plugins: [
-      glsl(),
-
-      handlebars({
-        context() {
-          return {
-            ...results,
-          };
-        },
-        helpers: handlebarsHelpers,
-        partialDirectory: resolve('src/views'),
-      }),
-
-      VitePWA({
-        workbox: {
-          cleanupOutdatedCaches: false,
-        },
-      }),
-    ],
+    plugins: [vitePluginPug(), glsl()],
 
     resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src/app', import.meta.url)),
+      alias: [
+        {
+          find: '@app',
+          replacement: '/app',
+        },
+
+        {
+          find: '@utils',
+          replacement: '/app/utils',
+        },
+        {
+          find: '@components',
+          replacement: '/app/components',
+        },
+        {
+          find: '@styles',
+          replacement: '/styles',
+        },
+
+        {
+          find: '@canvas',
+          replacement: '/app/components/Canvas',
+        },
+
+        {
+          find: '@shaders',
+          replacement: '/app/shaders',
+        },
+
+        {
+          find: '@pages',
+          replacement: '/app/pages',
+        },
+
+        {
+          find: '@classes',
+          replacement: '/app/classes',
+        },
+
+        {
+          find: '@animations',
+          replacement: '/app/animations',
+        },
+      ],
+    },
+
+    css: {
+      preprocessorOptions: {
+        scss: {
+          sassOptions: {
+            outputStyle: 'compressed',
+          },
+        },
       },
     },
   });

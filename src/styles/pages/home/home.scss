@@ -1,0 +1,145 @@
+.home {
+  @extend %center;
+  @extend %page;
+
+  // background: $color-contessa;
+  // color: $color-quarter-spanish-white;
+  overflow: hidden;
+  text-align: center;
+
+  &--active {
+    @extend %page--active;
+  }
+}
+
+.home__wrapper {
+  @extend %cover;
+
+  &:before,
+  &:after {
+    content: '';
+    height: 35rem;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &:before {
+    background: linear-gradient(to bottom, $color-contessa 15%, rgba($color-contessa, 0) 100%);
+    top: 0;
+  }
+
+  &:after {
+    background: linear-gradient(to top, $color-contessa 15%, rgba($color-contessa, 0) 100%);
+    bottom: 0;
+  }
+}
+
+.home__titles {
+  @extend %vertical-titles;
+}
+
+.home__titles__label {
+  @extend %vertical-titles__label;
+}
+
+.home__titles__label__text {
+  @extend %vertical-titles__label__text;
+}
+
+.home__titles__title {
+  @extend %vertical-titles__title;
+}
+
+.home__titles__title__text {
+  @extend %vertical-titles__title__text;
+}
+
+.home__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  left: 50%;
+  padding: 0 2.5rem;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  visibility: hidden;
+
+  @include media('<=phone') {
+    padding: 0 1.5rem;
+  }
+}
+
+.home__gallery__media {
+  padding: 2.5rem;
+  width: 20%;
+
+  &--2 {
+    transform: translateY(10rem);
+  }
+
+  &--3 {
+    transform: translateY(30rem);
+  }
+
+  &--4 {
+    transform: translateY(20rem);
+  }
+
+  &--5 {
+    transform: translateY(40rem);
+  }
+
+  @include media('<=phone') {
+    padding: 1.5rem;
+    width: 50%;
+
+    &--2,
+    &--3,
+    &--4,
+    &--5 {
+      transform: translateY(0);
+    }
+  }
+}
+
+.home__gallery__media__image {
+  display: block;
+  width: 100%;
+}
+
+.home__link {
+  @extend %description-14;
+
+  align-items: center;
+  bottom: 5rem;
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  left: 50%;
+  letter-spacing: 0.05rem;
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  width: 28.8rem;
+  z-index: 2;
+
+  span {
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  @include media('<phone') {
+    bottom: 7.5rem;
+    height: 13.7rem;
+    width: 55rem;
+  }
+}
+
+.home__link__icon {
+  @extend %cover;
+}

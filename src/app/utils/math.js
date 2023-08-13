@@ -1,23 +1,37 @@
-import GSAP from 'gsap';
+import GSAP from "gsap";
 
-export const lerp = GSAP.utils.interpolate;
+export function lerp(p1, p2, t) {
+	return p1 + (p2 - p1) * t;
+}
 
-export const round = (x, d) => {
-  return Number(x.toFixed(d));
-};
+export function map(num, min1, max1, min2, max2, round = false, constrainMin = true, constrainMax = true) {
+	if (constrainMin && num < min1) return min2;
+	if (constrainMax && num > max1) return max2;
 
-export const interpolate = (start, end, value) => {
-  return start * (1.0 - value) + end * value;
-};
+	const num1 = (num - min1) / (max1 - min1);
+	const num2 = num1 * (max2 - min2) + min2;
 
-export const clamp = (min, max, number) => {
-  return Math.max(min, Math.min(number, max));
-};
+	if (round) return Math.round(num2);
 
-export const random = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
+	return num2;
+}
 
-export const delay = ms => {
-  return new Promise(res => gsap.delayedCall(ms / 1000, res));
-};
+export function easeInOut(t) {
+	return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+}
+
+export function interpolate(start, end, value) {
+	return start * (1.0 - value) + end * value;
+}
+
+export function clamp(min, max, number) {
+	return Math.max(min, Math.min(number, max));
+}
+
+export function random(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+export function delay(ms) {
+	return new Promise((res) => GSAP.delayedCall(ms / 1000, res));
+}

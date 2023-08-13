@@ -1,3 +1,3 @@
 if (window.history.scrollRestoration) {
-  window.history.scrollRestoration = 'manual';
+	window.history.scrollRestoration = "manual";
 }

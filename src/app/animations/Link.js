@@ -1,8 +1,7 @@
 import GSAP from 'gsap';
-import Animation from '@/classes/Animation';
+import Animation from '@classes/Animation';
 
-import { IMAGE as ease } from '@/utils/easings';
-import { split } from '@/utils/text';
+import { split } from '@utils/text';
 
 export default class extends Animation {
   constructor({ element, elements }) {
@@ -55,11 +54,11 @@ export default class extends Animation {
       this.elements.textSpans,
       {
         duration: 0.5,
-        ease,
+        ease: 'power2',
         transform: 'rotate3d(1, 0.2, 0, -90deg)',
         stagger: 0.02,
       },
-      0
+      0,
     );
 
     this.timeline.fromTo(
@@ -69,11 +68,11 @@ export default class extends Animation {
       },
       {
         duration: 0.5,
-        ease,
+        ease: 'power2',
         transform: 'rotate3d(0, 0, 0, 90deg)',
         stagger: 0.02,
       },
-      0.05
+      0.05,
     );
 
     this.animateOut();

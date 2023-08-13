@@ -1,9 +1,9 @@
 import GSAP from 'gsap';
 
-import Component from '@/classes/Component';
+import Component from '@classes/Component';
 
-import { DEFAULT as ease } from '@/utils/easings';
-import { split } from '@/utils/text';
+import { DEFAULT as ease } from '@utils/easings';
+import { split } from '@utils/text';
 
 export default class Button extends Component {
   constructor({ element }) {
@@ -56,7 +56,7 @@ export default class Button extends Component {
         transform: 'rotate3d(1, 0.1, 0, -90deg)',
         stagger: 0.01,
       },
-      0
+      0,
     );
 
     this.timeline.fromTo(
@@ -70,7 +70,7 @@ export default class Button extends Component {
         transform: 'rotate3d(0, 0, 0, 90deg)',
         stagger: 0.01,
       },
-      0.05
+      0.05,
     );
   }
 
