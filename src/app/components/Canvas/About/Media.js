@@ -1,7 +1,7 @@
 import GSAP from 'gsap';
 import { Mesh, Program } from 'ogl';
 
-import Detection from '@classes/Detection';
+import { Detection } from '@classes/Detection';
 
 import fragment from '@shaders/plane-fragment.glsl';
 import vertex from '@shaders/plane-vertex.glsl';
@@ -131,7 +131,7 @@ export default class {
   updateY(y = 0) {
     this.y = (this.bounds.top + y) / window.innerHeight;
 
-    const extra = Detection.isPhone() ? 15 : 60;
+    const extra = Detection.isMobile ? 15 : 60;
 
     this.mesh.position.y =
       this.sizes.height / 2 -

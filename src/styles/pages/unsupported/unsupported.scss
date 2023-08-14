@@ -1,0 +1,94 @@
+.unsupported {
+  align-items: center;
+  background: $color-contessa;
+  color: $color-quarter-spanish-white;
+  cursor: default;
+  display: flex;
+  height: 100%;
+  left: 0;
+  padding-left: 10rem;
+  padding-top: 10rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  &:before {
+    background: rgba($color-black, 0.5);
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &:not(.unsupported--disabled) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &--disabled {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @include media('<phone') {
+    padding-left: 0;
+    padding-top: 0;
+  }
+}
+
+.unsupported__wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  @include media('<phone') {
+    padding: 0 1.5rem;
+  }
+}
+
+.unsupported__title {
+  font: 6.4rem/1.22 $font-suisse-bp;
+  letter-spacing: 0.185rem;
+  margin-bottom: 6rem;
+
+  @include media('<phone') {
+    font-size: 4rem;
+    letter-spacing: 0.12rem;
+    line-height: 1.33;
+    margin-bottom: 3rem;
+
+    br {
+      display: none;
+    }
+  }
+}
+
+.unsupported__subtitle {
+  font: 1.8rem $font-george-x;
+
+  margin-bottom: 1.5rem;
+}
+
+.unsupported__description {
+  font: 3.2rem $font-suisse-bp;
+  letter-spacing: 0.1rem;
+  line-height: 1.53;
+  margin-bottom: 14rem;
+
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @include media('<phone') {
+    font-size: 1.7rem;
+    line-height: 1.56;
+    margin-bottom: 5.5rem;
+    width: 35rem;
+  }
+}

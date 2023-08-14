@@ -6,7 +6,7 @@ import Prefix from 'prefix';
 import Paragraph from '@animations/Paragraph';
 
 import AsyncLoad from '@classes/AsyncLoad';
-import Detection from '@classes/Detection';
+import { Detection } from '@classes/Detection';
 
 import each from 'lodash/each';
 
@@ -202,7 +202,7 @@ export default class Page extends EventEmitter {
   }
 
   onTouchDown(event) {
-    if (!Detection.isPhone()) return;
+    if (!Detection.isMobile) return;
 
     this.isDown = true;
 
@@ -211,7 +211,7 @@ export default class Page extends EventEmitter {
   }
 
   onTouchMove(event) {
-    if (!Detection.isPhone() || !this.isDown) return;
+    if (!Detection.isMobile || !this.isDown) return;
 
     const y = event.touches ? event.touches[0].clientY : event.clientY;
     const distance = (this.start - y) * 3;
@@ -220,7 +220,7 @@ export default class Page extends EventEmitter {
   }
 
   onTouchUp(event) {
-    if (!Detection.isPhone()) return;
+    if (!Detection.isMobile) return;
 
     this.isDown = false;
   }

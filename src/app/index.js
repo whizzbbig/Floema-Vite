@@ -4,16 +4,18 @@ import '@utils/scroll';
 
 import AutoBind from 'auto-bind';
 import Stats from 'stats.js';
-
 import NormalizeWheel from 'normalize-wheel';
-
 import each from 'lodash/each';
+
+import { Detection } from '@classes/Detection';
 
 import Canvas from '@components/Canvas';
 import Navigation from '@components/Navigation';
 import Preloader from '@components/Preloader';
 import Transition from '@components/Transition';
 
+import UnsupportedScreen from '@pages/Unsupported/UnsupportedScreen';
+import WebGLScreen from '@pages/Unsupported/WebGLScreen';
 import About from '@pages/About';
 // // import Collections from '@pages/Collections';
 import Home from '@pages/Home';
@@ -34,13 +36,18 @@ class App {
     AutoBind(this);
 
     this.createCanvas();
-    this.createPreloader();
     this.createTransition();
     this.createNavigation();
     this.createPages();
 
     this.addEventListeners();
     this.addLinkListeners();
+
+    Detection.check({
+      onErrorBrowser: this.createUnsupportedScreen,
+      onErrorWebGL: this.createWebGLScreen,
+      onSuccess: this.createPreloader,
+    });
 
     this.onResize();
 
@@ -58,7 +65,7 @@ class App {
       canvas: this.canvas,
     });
 
-    this.preloader.once('completed', this.onPreloaded.bind(this));
+    this.preloader.once('completed', this.onPreloaded);
   }
 
   createCanvas() {
@@ -83,6 +90,16 @@ class App {
     };
 
     this.page = this.pages[this.template];
+  }
+
+  createUnsupportedScreen() {
+    this.unsupportedScreen = new UnsupportedScreen({
+      onContinue: () => this.createPreloaderScreen(),
+    });
+  }
+
+  createWebGLScreen() {
+    this.webGLScreen = new WebGLScreen();
   }
 
   /**
@@ -221,7 +238,7 @@ class App {
       this.stats.end();
     }
 
-    this.frame = window.requestAnimationFrame(this.update.bind(this));
+    this.frame = window.requestAnimationFrame(this.update);
   }
 
   /***
