@@ -1,4 +1,4 @@
-yarn# Lothus Boilerplate
+# Lothus Boilerplate
 
 ```sh
 ├── /_site/                       # Production directory (minified, optimized and compiled files)
