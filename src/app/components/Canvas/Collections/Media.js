@@ -8,7 +8,7 @@ import vertex from '@shaders/collections-vertex.glsl';
 
 import MediaDOM from './MediaDOM';
 
-export default class extends Component {
+export default class Media extends Component {
   constructor({ detail, element, geometry, gl, index, scene, sizes }) {
     super({
       element,

@@ -6,7 +6,7 @@ import { getOffset, mapEach } from '@utils/dom';
 
 import Media from './Media';
 
-export default class {
+export default class Collections {
   constructor({ camera, gl, renderer, scene, sizes, transition }) {
     this.id = 'collections';
 

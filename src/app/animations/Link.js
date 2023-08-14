@@ -3,7 +3,7 @@ import Animation from '@classes/Animation';
 
 import { split } from '@utils/text';
 
-export default class extends Animation {
+export default class Link extends Animation {
   constructor({ element, elements }) {
     super({
       element,

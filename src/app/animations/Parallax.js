@@ -4,7 +4,7 @@ import { BREAKPOINT_TABLET } from '@utils/breakpoints';
 import { getOffset } from '@utils/dom';
 import { clamp, map } from '@utils/math';
 
-export default class {
+export default class Parallax {
   constructor({ element }) {
     this.transform = Prefix('transform');
 

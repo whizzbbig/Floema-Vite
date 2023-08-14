@@ -4,7 +4,7 @@ import { Mesh, Plane, Program } from 'ogl';
 import fragment from '@shaders/plane-fragment.glsl';
 import vertex from '@shaders/plane-vertex.glsl';
 
-export default class {
+export default class Transition {
   constructor({ collections, gl, scene, sizes, url }) {
     this.collections = collections;
     this.gl = gl;

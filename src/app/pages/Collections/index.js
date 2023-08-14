@@ -3,7 +3,7 @@ import Page from '@classes/Page';
 import { mapEach } from '@utils/dom';
 import { split } from '@utils/text';
 
-export default class extends Page {
+export default class Collections extends Page {
   constructor() {
     super({
       id: 'collections',

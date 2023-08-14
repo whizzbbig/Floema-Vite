@@ -5,7 +5,7 @@ import map from 'lodash/map';
 
 import Gallery from './Gallery';
 
-export default class {
+export default class About {
   constructor({ gl, scene, sizes }) {
     this.gl = gl;
     this.scene = scene;

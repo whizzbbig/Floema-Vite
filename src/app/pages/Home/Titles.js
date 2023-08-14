@@ -7,7 +7,7 @@ import Component from '@classes/Component';
 import { getOffset } from '@utils/dom';
 import { lerp } from '@utils/math';
 
-export default class extends Component {
+export default class Titles extends Component {
   constructor({ element, elements }) {
     super({
       element,

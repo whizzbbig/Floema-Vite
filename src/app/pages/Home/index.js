@@ -2,7 +2,7 @@ import Page from '@classes/Page';
 
 import Titles from './Titles';
 
-export default class extends Page {
+export default class Home extends Page {
   constructor() {
     super({
       id: 'home',

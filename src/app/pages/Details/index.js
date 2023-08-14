@@ -6,7 +6,7 @@ import { mapEach } from '@utils/dom';
 
 import Detail from './Detail';
 
-export default class extends Page {
+export default class Details extends Page {
   constructor() {
     super({
       id: 'details',

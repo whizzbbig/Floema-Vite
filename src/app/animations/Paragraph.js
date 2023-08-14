@@ -5,7 +5,7 @@ import Animation from '@classes/Animation';
 import { CSS } from '@utils/easings';
 import { calculate, split } from '@utils/text';
 
-export default class extends Animation {
+export default class Paragraph extends Animation {
   constructor({ element }) {
     const lines = [];
     const paragraphs = element.querySelectorAll('h1, h2, p');

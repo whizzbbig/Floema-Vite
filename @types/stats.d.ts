@@ -1,4 +1,4 @@
-declare module 'stats-js' {
+declare module 'stats.js' {
   export default class Stats {
     constructor();
 

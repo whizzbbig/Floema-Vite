@@ -6,7 +6,7 @@ import { Detection } from '@classes/Detection';
 import fragment from '@shaders/plane-fragment.glsl';
 import vertex from '@shaders/plane-vertex.glsl';
 
-export default class {
+export default class Media {
   constructor({ element, geometry, gl, index, scene, sizes }) {
     this.element = element;
     this.geometry = geometry;

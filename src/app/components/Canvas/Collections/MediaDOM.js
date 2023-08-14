@@ -6,7 +6,7 @@ import { mapEach } from '@utils/dom';
 import { DEFAULT as ease } from '@utils/easings';
 import { calculate, split } from '@utils/text';
 
-export default class Navigation extends Component {
+export default class MediaDOM extends Component {
   constructor({ element }) {
     super({
       classes: {

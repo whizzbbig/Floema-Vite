@@ -4,7 +4,7 @@ import { Mesh, Program } from 'ogl';
 import fragment from '@shaders/home-fragment.glsl';
 import vertex from '@shaders/home-vertex.glsl';
 
-export default class {
+export default class Media {
   constructor({ element, geometry, gl, index, scene, sizes }) {
     this.element = element;
     this.geometry = geometry;
