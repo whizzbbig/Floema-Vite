@@ -2,14 +2,36 @@ require('dotenv').config();
 
 const prismicH = require('@prismicio/helpers');
 const prismic = require('@prismicio/client');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 const PRISMIC_REPO = process.env.PRISMIC_REPOSITORY;
 const PRISMIC_TOKEN = process.env.PRISMIC_ACCESS_TOKEN;
 
+const axiosAdapter = async (url, options = {}) => {
+  try {
+    const response = await axios({ url, ...options });
+    return {
+      ok: response.status >= 200 && response.status < 300,
+      status: response.status,
+      statusText: response.statusText,
+      json: () => Promise.resolve(response.data),
+    };
+  } catch (error) {
+    if (error.response) {
+      return {
+        ok: false,
+        status: error.response.status,
+        statusText: error.response.statusText,
+        json: () => Promise.resolve(error.response.data),
+      };
+    }
+    throw error;
+  }
+};
+
 const client = prismic.createClient(PRISMIC_REPO, {
   accessToken: PRISMIC_TOKEN,
-  fetch,
+  fetch: axiosAdapter,
 });
 
 async function fetchPrismicData() {
