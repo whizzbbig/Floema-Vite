@@ -28,7 +28,10 @@ async function fetchPrismicData() {
     pageSize: 100,
   });
 
-  const collections = await client.getSingle('collections');
+  const collections = await client.getSingle('collections', {
+    fetchLinks: 'collection.title',
+  });
+
   // const prdouctList = await client.getSingle('product');
 
   const assets = [];

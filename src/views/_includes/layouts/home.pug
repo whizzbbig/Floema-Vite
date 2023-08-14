@@ -1,14 +1,12 @@
 .home(data-background=colors.contessa data-color=colors["quarter-spanish-white"])
   .home__wrapper
     .home__titles
-      each collection, index in prismic.collections
+      each collection, index in prismic.collection
         .home__titles__label
-          .home__titles__label__text=`${prismic.home.data.collection}`
-          //- .home__titles__label__text #{toNumbers(2)}
+          .home__titles__label__text=`${prismic.home.data.collection} ${utilities.toNumbers(index)}`
 
         .home__titles__title
-          .home__titles__title__text toto
-          //- .home__titles__title__text=data.collection.data.title
+          .home__titles__title__text=collection.data.title
 
     .home__gallery
       each rows in [0, 1]

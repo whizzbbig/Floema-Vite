@@ -52,7 +52,7 @@ export default class Preloader extends Component {
     each(this.elements.titleSpans, (line, index) => {
       const letters = line.querySelectorAll('span');
 
-      const onStart = _ => {
+      const onStart = () => {
         GSAP.fromTo(
           letters,
           {
@@ -90,7 +90,7 @@ export default class Preloader extends Component {
       );
     });
 
-    this.animateIn.call(_ => {
+    this.animateIn.call(() => {
       window.ASSETS.forEach(image => {
         const texture = new Texture(this.canvas.gl, {
           generateMipmaps: false,
@@ -124,7 +124,7 @@ export default class Preloader extends Component {
   }
 
   onLoaded() {
-    return new Promise(resolve => {
+    return new Promise(() => {
       this.emit('completed');
 
       this.animateOut = GSAP.timeline({

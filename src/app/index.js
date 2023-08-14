@@ -17,7 +17,7 @@ import Transition from '@components/Transition';
 import UnsupportedScreen from '@pages/Unsupported/UnsupportedScreen';
 import WebGLScreen from '@pages/Unsupported/WebGLScreen';
 import About from '@pages/About';
-// // import Collections from '@pages/Collections';
+import Collections from '@pages/Collections';
 import Home from '@pages/Home';
 
 class App {
@@ -81,13 +81,13 @@ class App {
 
   createPages() {
     this.about = new About();
-    // this.collections = new Collections();
+    this.collections = new Collections();
     this.home = new Home();
 
     this.pages = {
       '/': this.home,
       '/about': this.about,
-      // '/collections': this.collections,
+      '/collections': this.collections,
     };
 
     this.page = this.pages[this.template];
