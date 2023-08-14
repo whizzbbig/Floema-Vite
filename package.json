@@ -13,6 +13,7 @@
     "@11ty/eleventy-plugin-vite": "^4.0.0",
     "@types/11ty__eleventy-img": "^2.0.2",
     "@types/events": "^3.0.0",
+    "@types/fontfaceobserver": "^2.1.0",
     "@types/lodash": "^4.14.197",
     "@types/normalize-wheel": "^1.0.1",
     "@types/semver-compare": "^1.0.1",
@@ -25,6 +26,7 @@
     "pug": "^3.0.2",
     "sass": "^1.65.1",
     "stats.js": "^0.17.0",
+    "tweakpane": "^4.0.0",
     "typescript": "^5.1.6",
     "vite-plugin-glslify": "^2.0.2"
   },
@@ -34,6 +36,7 @@
     "auto-bind": "^5.0.1",
     "detect-gpu": "^5.0.37",
     "events": "^3.3.0",
+    "fontfaceobserver": "^2.3.0",
     "gsap": "^3.12.2",
     "include-media": "^2.0.0",
     "lodash": "^4.17.21",

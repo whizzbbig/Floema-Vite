@@ -6,6 +6,7 @@ import AutoBind from 'auto-bind';
 import Stats from 'stats.js';
 import NormalizeWheel from 'normalize-wheel';
 import each from 'lodash/each';
+import FontFaceObserver from 'fontfaceobserver';
 
 import { Detection } from '@classes/Detection';
 
@@ -288,4 +289,13 @@ class App {
   }
 }
 
-new App();
+const georgeX = new FontFaceObserver('George X');
+const suisseBP = new FontFaceObserver('Suisse BP');
+
+Promise.all([georgeX.load(), suisseBP.load()])
+  .then(() => {
+    window.APP = new App();
+  })
+  .catch(() => {
+    window.APP = new App();
+  });

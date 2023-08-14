@@ -10,6 +10,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
+    "no-console": "warn",
     "no-debugger": "warn",
     "no-unused-vars": [
       "warn",

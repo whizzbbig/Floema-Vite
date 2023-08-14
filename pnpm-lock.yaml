@@ -16,6 +16,9 @@ dependencies:
   events:
     specifier: ^3.3.0
     version: 3.3.0
+  fontfaceobserver:
+    specifier: ^2.3.0
+    version: 2.3.0
   gsap:
     specifier: ^3.12.2
     version: 3.12.2
@@ -60,6 +63,9 @@ devDependencies:
   '@types/events':
     specifier: ^3.0.0
     version: 3.0.0
+  '@types/fontfaceobserver':
+    specifier: ^2.1.0
+    version: 2.1.0
   '@types/lodash':
     specifier: ^4.14.197
     version: 4.14.197
@@ -96,6 +102,9 @@ devDependencies:
   stats.js:
     specifier: ^0.17.0
     version: 0.17.0
+  tweakpane:
+    specifier: ^4.0.0
+    version: 4.0.0
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
@@ -617,6 +626,10 @@ packages:
 
   /@types/events@3.0.0:
     resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
+    dev: true
+
+  /@types/fontfaceobserver@2.1.0:
+    resolution: {integrity: sha512-Vqf183RAiFdIjUi4asKqogf2HIfLDnxn+dQo9GCpnsU5QrrsLMA2bkJU1dHRudQlizLybWD61Csd1zAgUQ3JKQ==}
     dev: true
 
   /@types/lodash@4.14.197:
@@ -1464,6 +1477,10 @@ packages:
       debug:
         optional: true
     dev: true
+
+  /fontfaceobserver@2.3.0:
+    resolution: {integrity: sha512-6FPvD/IVyT4ZlNe7Wcn5Fb/4ChigpucKYSvD6a+0iMoLn2inpo711eyIcKjmDtE5XNcgAkSH9uN/nfAeZzHEfg==}
+    dev: false
 
   /form-data@4.0.0:
     resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
@@ -3004,6 +3021,10 @@ packages:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
       safe-buffer: 5.2.1
+    dev: true
+
+  /tweakpane@4.0.0:
+    resolution: {integrity: sha512-U1kbExuRj921my8EX7VHq+ajYoIIzlE7+4P94CtHkBBLw0ggq8ktyY6cUCHb/lOKrTUS7N0OKY1HawBcX4vecA==}
     dev: true
 
   /type-check@0.3.2:
