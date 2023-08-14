@@ -1,6 +1,5 @@
 const path = require('path');
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
-const Image = require('@11ty/eleventy-img');
 const glslifyPlugin = require('vite-plugin-glslify').default;
 
 module.exports = function (eleventyConfig) {

@@ -171,7 +171,7 @@ class App {
       this.page.onResize();
     }
 
-    window.requestAnimationFrame(_ => {
+    window.requestAnimationFrame(() => {
       if (this.canvas && this.canvas.onResize) {
         this.canvas.onResize();
       }

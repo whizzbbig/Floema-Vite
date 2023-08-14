@@ -427,8 +427,8 @@ export default class MediaDOM extends Component {
   onResize() {
     this.bounds = this.elements.media.getBoundingClientRect();
 
-    window.requestAnimationFrame(_ => {
-      window.requestAnimationFrame(_ => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
         this.elements.sizeLines = calculate(this.elements.sizeSpans);
         this.elements.starLines = calculate(this.elements.starSpans);
         this.elements.infoLines = calculate(this.elements.infoSpans);

@@ -232,7 +232,7 @@ export default class Page extends EventEmitter {
   onResize() {
     if (!this.elements.wrapper) return;
 
-    window.requestAnimationFrame(_ => {
+    window.requestAnimationFrame(() => {
       this.scroll.limit =
         this.elements.wrapper.clientHeight - window.innerHeight;
 

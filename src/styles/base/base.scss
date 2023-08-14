@@ -14,6 +14,9 @@ html {
   line-height: 1;
   overflow: hidden;
   position: fixed;
+  overscroll-behavior: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 
   @include media('<phone') {
     font-size: calc(100vw / 750 * 10);
@@ -62,9 +65,9 @@ img {
   @extend %cover;
 }
 
-[data-animation="label"],
-[data-animation="paragraph"],
-[data-animation="title"] {
+[data-animation='label'],
+[data-animation='paragraph'],
+[data-animation='title'] {
   span {
     display: inline-block;
     overflow: hidden;
@@ -72,7 +75,7 @@ img {
   }
 }
 
-[data-animation="button"] {
+[data-animation='button'] {
   display: inline-block;
   position: relative;
   white-space: nowrap;
@@ -84,7 +87,7 @@ img {
   }
 }
 
-[data-animation="link"] {
+[data-animation='link'] {
   display: inline-block;
   position: relative;
   white-space: nowrap;
