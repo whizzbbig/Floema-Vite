@@ -156,7 +156,16 @@ export default class Page extends EventEmitter {
    */
   createObserver() {
     this.observer = new window.ResizeObserver(entries => {
+      let shouldUpdateLimit = false;
+
       for (const _entry of entries) {
+        if (_entry.target === this.elements.wrapper) {
+          shouldUpdateLimit = true;
+          break;
+        }
+      }
+
+      if (shouldUpdateLimit) {
         window.requestAnimationFrame(() => {
           this.scroll.limit =
             this.elements.wrapper.clientHeight - window.innerHeight;
@@ -236,8 +245,10 @@ export default class Page extends EventEmitter {
       this.scroll.limit =
         this.elements.wrapper.clientHeight - window.innerHeight;
 
-      each(this.animations, animation => {
-        animation.onResize && animation.onResize();
+      this.animations.forEach(animation => {
+        if (animation.onResize) {
+          animation.onResize();
+        }
       });
     });
   }
@@ -302,8 +313,10 @@ export default class Page extends EventEmitter {
       this.transform(this.elements.wrapper, this.scroll.current);
     }
 
-    each(this.animations, animation => {
-      animation.update && animation.update(this.scroll);
+    this.animations.forEach(animation => {
+      if (animation.update) {
+        animation.update(this.scroll);
+      }
     });
 
     this.scroll.last = this.scroll.current;

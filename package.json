@@ -9,9 +9,9 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-img": "^3.1.0",
     "@11ty/eleventy-plugin-vite": "^4.0.0",
-    "@types/11ty__eleventy-img": "^2.0.2",
+    "@prismicio/client": "^7.1.1",
+    "@prismicio/helpers": "^2.3.9",
     "@types/events": "^3.0.0",
     "@types/fontfaceobserver": "^2.1.0",
     "@types/lodash": "^4.14.197",
@@ -31,8 +31,6 @@
     "vite-plugin-glslify": "^2.0.2"
   },
   "dependencies": {
-    "@prismicio/client": "^7.1.1",
-    "@prismicio/helpers": "^2.3.9",
     "auto-bind": "^5.0.1",
     "detect-gpu": "^5.0.37",
     "events": "^3.3.0",
