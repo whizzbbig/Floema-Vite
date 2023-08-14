@@ -1,5 +1,6 @@
 import SemverCompare from 'semver-compare';
 import UAParser from 'ua-parser-js';
+import { getGPUTier } from 'detect-gpu';
 
 const BROWSERS = {
   CHROME: 'chrome',
@@ -16,6 +17,7 @@ class DetectionManager {
     this.setDeviceType();
     this.setSupportData();
     this.setBrowserFlags();
+    this.checkGPUTier();
     this.checkBlendModeSupport();
   }
 
@@ -60,6 +62,13 @@ class DetectionManager {
       this.isMixBlendModeUnsupported = true;
       document.documentElement.classList.add('mix-blend-mode-unsupported');
     }
+  }
+
+  checkGPUTier() {
+    (async () => {
+      this.gpuTier = await getGPUTier();
+      console.log('GPU Tier:', this.gpuTier);
+    })();
   }
 
   compareVersions(a, b) {
