@@ -14,7 +14,7 @@
           figure.home__gallery__media(class=`home__gallery__media--${index % 5 + 1}`)
             img.home__gallery__media__image(alt=media.image.alt data-src=media.image.url)
 
-    a.home__link(data-animation="button" href=prismic.home.data.collections)
+    a.home__link(data-animation="button" href=prismic.collections.uid)
       span=prismic.home.data.button
 
       svg.home__link__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 60")

@@ -131,8 +131,6 @@ class DetectionManager {
     if (!this.isWebGLAvailable()) {
       onErrorWebGL();
     } else if (this.isSupported()) {
-      console.log('webl');
-
       onSuccess();
     } else {
       onErrorBrowser();

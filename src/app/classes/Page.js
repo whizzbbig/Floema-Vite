@@ -3,6 +3,9 @@ import EventEmitter from 'events';
 import GSAP from 'gsap';
 import Prefix from 'prefix';
 
+import Button from '@animations/Button';
+import Link from '@animations/Link';
+import Parallax from '@animations/Parallax';
 import Paragraph from '@animations/Paragraph';
 
 import AsyncLoad from '@classes/AsyncLoad';
@@ -28,8 +31,10 @@ export default class Page extends EventEmitter {
       elements: {
         preloaders: '[data-src]',
 
+        animationsButtons: '[data-animation="button"]',
+        animationsLinks: '[data-animation="link"]',
+        animationsParallaxes: '[data-animation="parallax"]',
         animationsParagraphs: '[data-animation="paragraph"]',
-
         footer: '.footer',
         footerCredits: '.footer__credits',
 
@@ -96,6 +101,43 @@ export default class Page extends EventEmitter {
    * Animations.
    */
   createAnimations() {
+    /**
+     * Buttons.
+     */
+    this.animationsButtons = mapEach(
+      this.elements.animationsButtons,
+      element => {
+        return new Button({
+          element,
+        });
+      },
+    );
+
+    this.animations.push(...this.animationsButtons);
+
+    /**
+     * Links.
+     */
+    this.animationsLinks = mapEach(this.elements.animationsLinks, element => {
+      return new Link({
+        element,
+      });
+    });
+
+    this.animations.push(...this.animationsLinks);
+
+    /**
+     * Parallaxes.
+     */
+    this.animationsParallaxes = mapEach(
+      this.elements.animationsParallaxes,
+      element => {
+        return new Parallax({ element });
+      },
+    );
+
+    this.animations.push(...this.animationsParallaxes);
+
     /**
      * Paragraphs.
      */
