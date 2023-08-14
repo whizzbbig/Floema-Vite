@@ -258,7 +258,6 @@ class App {
     window.addEventListener('touchmove', this.onTouchMove, { passive: true });
     window.addEventListener('touchend', this.onTouchUp, { passive: true });
 
-    window.addEventListener('mousewheel', this.onWheel, { passive: true });
     window.addEventListener('wheel', this.onWheel, { passive: true });
 
     window.oncontextmenu = this.onContextMenu;
@@ -292,7 +291,9 @@ class App {
 const georgeX = new FontFaceObserver('George X');
 const suisseBP = new FontFaceObserver('Suisse BP');
 
-Promise.all([georgeX.load(), suisseBP.load()])
+const timeout = 20000;
+
+Promise.all([georgeX.load(null, timeout), suisseBP.load(null, timeout)])
   .then(() => {
     window.APP = new App();
   })
