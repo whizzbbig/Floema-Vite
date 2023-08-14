@@ -10,7 +10,6 @@ import each from 'lodash/each';
 import FontFaceObserver from 'fontfaceobserver';
 
 import { Detection } from '@classes/Detection';
-import GUI from '@classes/GUI';
 
 import Canvas from '@components/Canvas';
 import Navigation from '@components/Navigation';
@@ -54,8 +53,6 @@ class App {
     this.addLinkListeners();
 
     this.onResize();
-
-    this.update();
   }
 
   createNavigation() {
@@ -115,11 +112,19 @@ class App {
     document.body.appendChild(this.stats.dom);
   }
 
+  createAnalytics() {
+    // Custom events for Plausible, Fathom, etc
+  }
+
   /**
    * Events.
    */
   onPreloaded() {
     this.onResize();
+
+    this.createAnalytics();
+
+    this.update();
 
     this.canvas.onPreloaded();
 
@@ -230,11 +235,11 @@ class App {
       this.stats.begin();
     }
 
-    if (this.page && this.page.update) {
+    if (this.page) {
       this.page.update();
     }
 
-    if (this.canvas && this.canvas.update) {
+    if (this.canvas) {
       this.canvas.update(this.page.scroll);
     }
 

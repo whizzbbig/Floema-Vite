@@ -3,6 +3,8 @@ import GSAP from 'gsap';
 
 import map from 'lodash/map';
 
+import gui from '@classes/GUI';
+
 import Media from './Media';
 
 export default class Home {
@@ -48,6 +50,8 @@ export default class Home {
     this.onResize({
       sizes: this.sizes,
     });
+
+    this.createDebug();
   }
 
   createGeometry() {
@@ -104,23 +108,31 @@ export default class Home {
     map(this.medias, media => media.onResize(event, this.scroll));
   }
 
-  onTouchDown({ x, y }) {
+  onTouchDown() {
     this.scrollCurrent.x = this.scroll.x;
     this.scrollCurrent.y = this.scroll.y;
   }
 
-  onTouchMove({ x, y }) {
+  onTouchMove({ y }) {
     const yDistance = y.start - y.end;
 
     this.y.target = this.scrollCurrent.y - yDistance;
   }
 
-  onTouchUp({ x, y }) {}
+  onTouchUp() {}
 
-  onWheel({ pixelX, pixelY }) {
+  onWheel({ pixelY }) {
     this.y.target += pixelY;
 
     this.velocity = pixelY > 0 ? 2 : -2;
+  }
+
+  /**
+   * Debug.
+   */
+  createDebug() {
+    const folder = gui.instance.addFolder('Home');
+    folder.add(this, 'velocity').min(0).max(10).step(0.01);
   }
 
   /**
@@ -150,7 +162,7 @@ export default class Home {
 
     this.scroll.y = this.y.current;
 
-    map(this.medias, (media, index) => {
+    map(this.medias, media => {
       const offsetY = this.sizes.height * 0.5;
       const scaleY = media.mesh.scale.y / 2;
 
