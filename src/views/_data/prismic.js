@@ -18,12 +18,46 @@ async function fetchPrismicData() {
   const home = await client.getSingle('home');
   const meta = await client.getSingle('meta');
   const navigation = await client.getSingle('navigation');
-  const products = await client.getAllByType('product');
-  const collection = await client.getAllByType('collection');
+
+  const collection = await client.getAllByType('collection', {
+    fetchLinks: ['product.image', 'product.model'],
+  });
+
+  const products = await client.getAllByType('product', {
+    fetchLinks: 'collection.title',
+    pageSize: 100,
+  });
+
   const collections = await client.getSingle('collections');
   // const prdouctList = await client.getSingle('product');
 
+  const assets = [];
+
+  home.data.gallery.forEach(item => {
+    assets.push(item.image.url);
+  });
+
+  about.data.gallery.forEach(item => {
+    assets.push(item.image.url);
+  });
+
+  about.data.body.forEach(section => {
+    if (section.slice_type === 'gallery') {
+      section.items.forEach(item => {
+        assets.push(item.image.url);
+      });
+    }
+  });
+
+  collection.forEach(collection => {
+    collection.data.list.forEach(item => {
+      assets.push(item.product.data.image.url);
+      assets.push(item.product.data.model.url);
+    });
+  });
+
   const data = {
+    assets,
     about,
     home,
     meta,

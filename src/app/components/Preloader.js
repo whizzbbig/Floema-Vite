@@ -91,33 +91,30 @@ export default class Preloader extends Component {
     });
 
     this.animateIn.call(_ => {
-      // window.ASSETS.forEach(image => {
-      //   const texture = new Texture(this.canvas.gl, {
-      //     generateMipmaps: false,
-      //   });
+      window.ASSETS.forEach(image => {
+        const texture = new Texture(this.canvas.gl, {
+          generateMipmaps: false,
+        });
 
-      //   const media = new window.Image();
+        const media = new window.Image();
 
-      //   media.crossOrigin = 'anonymous';
-      //   media.src = image;
-      //   media.onload = _ => {
-      //     texture.image = media;
+        media.crossOrigin = 'anonymous';
+        media.src = image;
+        media.onload = () => {
+          texture.image = media;
 
-      //     this.onAssetLoaded();
-      //   };
+          this.onAssetLoaded();
+        };
 
-      //   window.TEXTURES[image] = texture;
-      // });
-
-      this.onAssetLoaded();
+        window.TEXTURES[image] = texture;
+      });
     });
   }
 
-  onAssetLoaded(image) {
+  onAssetLoaded() {
     this.length += 1;
 
-    const percent = 1;
-    // const percent = this.length / window.ASSETS.length;
+    const percent = this.length / window.ASSETS.length;
 
     this.elements.numberText.innerHTML = `${Math.round(percent * 100)}%`;
 
@@ -137,7 +134,7 @@ export default class Preloader extends Component {
       each(this.elements.titleSpans, (line, index) => {
         const letters = line.querySelectorAll('span');
 
-        const onStart = _ => {
+        const onStart = () => {
           GSAP.to(letters, {
             autoAlpha: 0,
             delay: 0.2,
@@ -178,7 +175,7 @@ export default class Preloader extends Component {
         duration: 1,
       });
 
-      this.animateOut.call(_ => {
+      this.animateOut.call(() => {
         this.destroy();
       });
     });

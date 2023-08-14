@@ -36,18 +36,19 @@ class App {
     AutoBind(this);
 
     this.createCanvas();
-    this.createTransition();
-    this.createNavigation();
-    this.createPages();
-
-    this.addEventListeners();
-    this.addLinkListeners();
 
     Detection.check({
       onErrorBrowser: this.createUnsupportedScreen,
       onErrorWebGL: this.createWebGLScreen,
       onSuccess: this.createPreloader,
     });
+
+    this.createTransition();
+    this.createNavigation();
+    this.createPages();
+
+    this.addEventListeners();
+    this.addLinkListeners();
 
     this.onResize();
 

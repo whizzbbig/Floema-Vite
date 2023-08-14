@@ -14,5 +14,8 @@ html(lang="en")
     include _includes/layouts/home.pug
     include _includes/layouts/about.pug
 
+  script.
+    window.ASSETS = !{JSON.stringify(prismic.assets).replace(/<\//g, "<\\/")}
+
   script(type="module", src="/src/app/index.js")
 

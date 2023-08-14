@@ -42,7 +42,7 @@ class DetectionManager {
   setBrowserFlags() {
     const browserName = this.parser.getBrowser().name;
     const isNotMobile = !this.isPhone && !this.isTablet;
-    const ua = navigator.userAgent.toLowerCase();
+    // const ua = navigator.userAgent.toLowerCase();
 
     this.isBrave = !!window.navigator.brave && isNotMobile;
     this.isChrome =
@@ -125,11 +125,6 @@ class DetectionManager {
     } catch (e) {
       return false;
     }
-  }
-
-  checkAppBrowser() {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    return ua.includes('FBAN') || ua.includes('FBAV') || ua.includes('Twitter');
   }
 
   check({ onErrorBrowser, onErrorWebGL, onSuccess }) {
