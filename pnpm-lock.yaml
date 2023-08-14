@@ -51,12 +51,21 @@ devDependencies:
   '@11ty/eleventy-plugin-vite':
     specifier: ^4.0.0
     version: 4.0.0(sass@1.65.1)
+  '@types/events':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@types/lodash':
     specifier: ^4.14.197
     version: 4.14.197
   '@types/normalize-wheel':
     specifier: ^1.0.1
     version: 1.0.1
+  '@types/semver-compare':
+    specifier: ^1.0.1
+    version: 1.0.1
+  '@types/ua-parser-js':
+    specifier: ^0.7.36
+    version: 0.7.36
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -593,6 +602,10 @@ packages:
       lodash.deburr: 4.1.0
     dev: true
 
+  /@types/events@3.0.0:
+    resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
+    dev: true
+
   /@types/lodash@4.14.197:
     resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
     dev: true
@@ -603,6 +616,14 @@ packages:
 
   /@types/normalize-wheel@1.0.1:
     resolution: {integrity: sha512-3YBVyWfiwIGDcQY+2ZeT3LxyApYnV3PrysjIKeNkQtT9Q9eq2mcPPcqSCYR4v/FhYJ9xtZNhXMKNxCn6ukLsXQ==}
+    dev: true
+
+  /@types/semver-compare@1.0.1:
+    resolution: {integrity: sha512-wx2LQVvKlEkhXp/HoKIZ/aSL+TvfJdKco8i0xJS3aR877mg4qBHzNT6+B5a61vewZHo79EdZavskGnRXEC2H6A==}
+    dev: true
+
+  /@types/ua-parser-js@0.7.36:
+    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==}
     dev: true
 
   /a-sync-waterfall@1.0.1:
