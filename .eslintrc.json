@@ -4,16 +4,17 @@
     "es2021": true,
     "node": true
   },
-
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-
   "rules": {
     "no-debugger": "warn",
-    "no-unused-vars": "warn",
+    "no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
     "no-undef": "error",
     "no-dupe-keys": "error",
     "no-duplicate-case": "error",

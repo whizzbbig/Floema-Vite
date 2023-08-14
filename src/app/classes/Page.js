@@ -156,9 +156,8 @@ export default class Page extends EventEmitter {
    */
   createObserver() {
     this.observer = new window.ResizeObserver(entries => {
-      for (const entry of entries) {
-        // eslint-disable-line
-        window.requestAnimationFrame(_ => {
+      for (const _entry of entries) {
+        window.requestAnimationFrame(() => {
           this.scroll.limit =
             this.elements.wrapper.clientHeight - window.innerHeight;
         });
@@ -198,7 +197,7 @@ export default class Page extends EventEmitter {
     this.transform(this.elements.wrapper, this.scroll.current);
   }
 
-  show(url) {
+  show(_url) {
     this.reset();
 
     this.isVisible = true;
@@ -213,7 +212,7 @@ export default class Page extends EventEmitter {
     return Promise.resolve();
   }
 
-  hide(url) {
+  hide(_url) {
     this.isVisible = false;
 
     this.removeEventListeners();
@@ -261,7 +260,7 @@ export default class Page extends EventEmitter {
     this.scroll.target = this.scroll.position + distance;
   }
 
-  onTouchUp(event) {
+  onTouchUp() {
     if (!Detection.isMobile) return;
 
     this.isDown = false;

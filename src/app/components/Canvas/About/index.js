@@ -1,5 +1,4 @@
 import { Plane, Transform } from 'ogl';
-import GSAP from 'gsap';
 
 import map from 'lodash/map';
 
@@ -74,7 +73,7 @@ export default class About {
     map(this.galleries, gallery => gallery.onTouchUp(event));
   }
 
-  onWheel({ pixelX, pixelY }) {}
+  onWheel() {}
 
   /**
    * Update.

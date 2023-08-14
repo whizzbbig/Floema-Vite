@@ -1,5 +1,3 @@
-import GSAP from 'gsap';
-
 import Page from '@classes/Page';
 
 import { mapEach } from '@utils/dom';

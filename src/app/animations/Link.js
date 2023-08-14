@@ -4,7 +4,7 @@ import Animation from '@classes/Animation';
 import { split } from '@utils/text';
 
 export default class Link extends Animation {
-  constructor({ element, elements }) {
+  constructor({ element }) {
     super({
       element,
       elements: {},

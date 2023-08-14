@@ -80,17 +80,17 @@ export default class Gallery {
     );
   }
 
-  onTouchDown({ x, y }) {
+  onTouchDown() {
     this.scroll.start = this.scroll.current;
   }
 
-  onTouchMove({ x, y }) {
+  onTouchMove({ x }) {
     const distance = x.start - x.end;
 
     this.scroll.target = this.scroll.start - distance;
   }
 
-  onTouchUp({ x, y }) {}
+  onTouchUp() {}
 
   /**
    * Update.
@@ -118,7 +118,7 @@ export default class Gallery {
       this.scroll.lerp,
     );
 
-    map(this.medias, (media, index) => {
+    map(this.medias, media => {
       const scaleX = media.mesh.scale.x / 2 + 0.25;
 
       if (this.direction === 'left') {

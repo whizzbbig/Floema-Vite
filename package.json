@@ -11,6 +11,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^3.1.0",
     "@11ty/eleventy-plugin-vite": "^4.0.0",
+    "@types/11ty__eleventy-img": "^2.0.2",
     "@types/events": "^3.0.0",
     "@types/lodash": "^4.14.197",
     "@types/normalize-wheel": "^1.0.1",

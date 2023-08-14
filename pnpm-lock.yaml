@@ -54,6 +54,9 @@ devDependencies:
   '@11ty/eleventy-plugin-vite':
     specifier: ^4.0.0
     version: 4.0.0(sass@1.65.1)
+  '@types/11ty__eleventy-img':
+    specifier: ^2.0.2
+    version: 2.0.2
   '@types/events':
     specifier: ^3.0.0
     version: 3.0.0
@@ -605,6 +608,13 @@ packages:
       lodash.deburr: 4.1.0
     dev: true
 
+  /@types/11ty__eleventy-img@2.0.2:
+    resolution: {integrity: sha512-WgnOITaLuYUrAM2pHDrHet9rl5X+keS3KOHbma41u7cOL9MLZPRkdoQGOOURhrjac6d2CHr5DGrZq7FfQ0Cczg==}
+    dependencies:
+      '@types/node': 20.5.0
+      '@types/sharp': 0.31.1
+    dev: true
+
   /@types/events@3.0.0:
     resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
     dev: true
@@ -617,12 +627,22 @@ packages:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
     dev: true
 
+  /@types/node@20.5.0:
+    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
+    dev: true
+
   /@types/normalize-wheel@1.0.1:
     resolution: {integrity: sha512-3YBVyWfiwIGDcQY+2ZeT3LxyApYnV3PrysjIKeNkQtT9Q9eq2mcPPcqSCYR4v/FhYJ9xtZNhXMKNxCn6ukLsXQ==}
     dev: true
 
   /@types/semver-compare@1.0.1:
     resolution: {integrity: sha512-wx2LQVvKlEkhXp/HoKIZ/aSL+TvfJdKco8i0xJS3aR877mg4qBHzNT6+B5a61vewZHo79EdZavskGnRXEC2H6A==}
+    dev: true
+
+  /@types/sharp@0.31.1:
+    resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
+    dependencies:
+      '@types/node': 20.5.0
     dev: true
 
   /@types/ua-parser-js@0.7.36:

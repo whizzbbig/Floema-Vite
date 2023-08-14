@@ -69,7 +69,7 @@ export default class Titles extends Component {
     this.scroll.target = this.scroll.position + distance;
   }
 
-  onTouchUp(event) {
+  onTouchUp() {
     if (!this.isEnabled) return;
 
     this.isDown = false;
@@ -109,7 +109,7 @@ export default class Titles extends Component {
       this.direction = 'up';
     }
 
-    each(this.elements.items, (element, index) => {
+    each(this.elements.items, element => {
       element.position = -this.scroll.current - element.extra;
 
       const offset = element.position + element.offset + element.height;
