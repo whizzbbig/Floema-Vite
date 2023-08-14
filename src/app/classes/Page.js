@@ -7,6 +7,7 @@ import Button from '@animations/Button';
 import Link from '@animations/Link';
 import Parallax from '@animations/Parallax';
 import Paragraph from '@animations/Paragraph';
+import Rotation from '@animations/Rotation';
 
 import AsyncLoad from '@classes/AsyncLoad';
 import { Detection } from '@classes/Detection';
@@ -35,6 +36,8 @@ export default class Page extends EventEmitter {
         animationsLinks: '[data-animation="link"]',
         animationsParallaxes: '[data-animation="parallax"]',
         animationsParagraphs: '[data-animation="paragraph"]',
+        animationsRotations: '[data-animation="rotation"]',
+
         footer: '.footer',
         footerCredits: '.footer__credits',
 
@@ -137,6 +140,18 @@ export default class Page extends EventEmitter {
     );
 
     this.animations.push(...this.animationsParallaxes);
+
+    /**
+     * Rotations.
+     */
+    this.animationsRotations = mapEach(
+      this.elements.animationsRotations,
+      element => {
+        return new Rotation({ element });
+      },
+    );
+
+    this.animations.push(...this.animationsRotations);
 
     /**
      * Paragraphs.

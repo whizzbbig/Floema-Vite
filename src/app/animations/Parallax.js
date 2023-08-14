@@ -10,7 +10,7 @@ export default class Parallax {
 
     this.element = element;
     this.media = element.querySelector('img');
-    this.media.onload = _ => {
+    this.media.onload = () => {
       this.onResize();
     };
 

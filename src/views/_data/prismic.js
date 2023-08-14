@@ -54,8 +54,6 @@ async function fetchPrismicData() {
     fetchLinks: 'collection.title',
   });
 
-  // const prdouctList = await client.getSingle('product');
-
   const assets = [];
 
   home.data.gallery.forEach(item => {

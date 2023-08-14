@@ -164,9 +164,9 @@ export default class Canvas {
       this.about.onTouchDown(values);
     }
 
-    if (this.collections) {
-      this.collections.onTouchDown(values);
-    }
+    // if (this.collections) {
+    //   this.collections.onTouchDown(values);
+    // }
 
     if (this.home) {
       this.home.onTouchDown(values);
@@ -185,9 +185,9 @@ export default class Canvas {
       y: this.y,
     };
 
-    if (this.collections) {
-      this.collections.onTouchMove(values);
-    }
+    // if (this.collections) {
+    //   this.collections.onTouchMove(values);
+    // }
 
     if (!this.isDown) return;
 
@@ -222,9 +222,9 @@ export default class Canvas {
       this.about.onTouchUp(values);
     }
 
-    if (this.collections) {
-      this.collections.onTouchUp(values);
-    }
+    // if (this.collections) {
+    //   this.collections.onTouchUp(values);
+    // }
 
     if (this.home) {
       this.home.onTouchUp(values);
