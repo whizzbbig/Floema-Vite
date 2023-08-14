@@ -84,6 +84,9 @@ devDependencies:
   eslint-config-prettier:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.47.0)
+  lil-gui:
+    specifier: ^0.18.2
+    version: 0.18.2
   prettier:
     specifier: ^3.0.1
     version: 3.0.1
@@ -96,9 +99,6 @@ devDependencies:
   stats.js:
     specifier: ^0.17.0
     version: 0.17.0
-  tweakpane:
-    specifier: ^4.0.0
-    version: 4.0.0
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
@@ -1844,6 +1844,10 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /lil-gui@0.18.2:
+    resolution: {integrity: sha512-DgdrLy3/KGC0PiQLKgOcJMPItP4xY4iWgJ9+91Zaxfr8GCTmMps05QS9w9jW7yspILlbscbquwjOwxmWnSx5Uw==}
+    dev: true
+
   /linkify-it@4.0.1:
     resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
     dependencies:
@@ -2657,10 +2661,6 @@ packages:
 
   /token-stream@1.0.0:
     resolution: {integrity: sha512-VSsyNPPW74RpHwR8Fc21uubwHY7wMDeJLys2IX5zJNih+OnAnaifKHo+1LHT7DAdloQ7apeaaWg8l7qnf/TnEg==}
-    dev: true
-
-  /tweakpane@4.0.0:
-    resolution: {integrity: sha512-U1kbExuRj921my8EX7VHq+ajYoIIzlE7+4P94CtHkBBLw0ggq8ktyY6cUCHb/lOKrTUS7N0OKY1HawBcX4vecA==}
     dev: true
 
   /type-check@0.3.2:

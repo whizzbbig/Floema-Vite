@@ -1,6 +1,7 @@
 import '@styles/index.scss';
 import '@utils/polyfill';
 import '@utils/scroll';
+import '@utils/sw';
 
 import AutoBind from 'auto-bind';
 import Stats from 'stats.js';
@@ -9,6 +10,7 @@ import each from 'lodash/each';
 import FontFaceObserver from 'fontfaceobserver';
 
 import { Detection } from '@classes/Detection';
+import GUI from '@classes/GUI';
 
 import Canvas from '@components/Canvas';
 import Navigation from '@components/Navigation';
