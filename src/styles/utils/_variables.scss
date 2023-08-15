@@ -1,0 +1,48 @@
+$_colors: (
+  bright-gray: #37384c,
+  cadet-blue: #b2b8c3,
+  contessa: #c97164,
+  quicksand: #bc978c,
+  quarter-spanish-white: #f9f1e7,
+);
+
+// You can get them with font(FONT)
+$_fonts: (
+  george-x: 'George X',
+  suisse-bp: 'Suisse BP',
+);
+
+// 1st level z-indexes. You can get them with z(Z_INDEX_NAME)
+$_z-indexes: (
+  preloader: 5,
+  transition: 4,
+  navigation: 3,
+  content: 2,
+  canvas: 1,
+);
+
+// You can get them with const(CONSTANTS)
+$_constants: (
+  nav-height: 10px,
+);
+
+// You can get them with ease(EASING)
+$_easings: (
+  ease-in-out: cubic-bezier(0.77, 0, 0.175, 1),
+);
+
+$breakpoints: (
+  'phone': 768px,
+  'tablet': 1024px,
+  'desktop': 1920px,
+) !default;
+
+@forward './functions' with (
+  $_z-indexes: $_z-indexes,
+  $_colors: $_colors,
+  $_fonts: $_fonts,
+  $_constants: $_constants,
+  $_easings: $_easings
+);
+
+@import 'node_modules/include-media/dist/include-media';

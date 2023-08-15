@@ -75,25 +75,7 @@ export default class Link extends Animation {
       0.05,
     );
 
-    this.animateOut();
     this.addEventListener();
-  }
-
-  animateIn() {
-    // GSAP.to(this.elements.textSpans, {
-    //   autoAlpha: 1,
-    //   duration: 0.2,
-    //   ease,
-    //   stagger: 0.02,
-    //   transform: 'rotate3d(0, 0, 0, 90deg)'
-    // })
-  }
-
-  animateOut() {
-    // GSAP.set(this.elements.textSpans, {
-    //   autoAlpha: 0,
-    //   transform: 'rotate3d(1, 0.3, 0, 90deg)'
-    // })
   }
 
   onMouseEnter() {

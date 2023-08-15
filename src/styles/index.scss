@@ -1,10 +1,17 @@
 @import './base/reset';
 
+// ------------------------------------
+// Utils
+// ------------------------------------
+
 @import './utils/variables';
 @import './utils/functions';
 @import './utils/mixins';
 @import './utils/vendors';
-@import './utils/responsive';
+
+// ------------------------------------
+// Shared
+// ------------------------------------
 
 @import './shared/descriptions';
 @import './shared/links';
@@ -12,23 +19,35 @@
 @import './shared/titles';
 @import './shared/vertical-titles';
 
+// ------------------------------------
+// Base
+// ------------------------------------
+
 @import './base/fonts';
 @import './base/base';
+
+// ------------------------------------
+// Components
+// ------------------------------------
 
 @import './components/preloader';
 @import './components/transition';
 
+// ------------------------------------
+// Layout
+// ------------------------------------
+
 @import './layout/navigation';
+
+// ------------------------------------
+// Pages
+// ------------------------------------
 
 @import './pages/about/about';
 @import './pages/about/content';
 @import './pages/about/gallery';
 @import './pages/about/highlight';
-
 @import './pages/collections/collections';
-
 @import './pages/details/details';
-
 @import './pages/home/home';
-
 @import './pages/unsupported/unsupported';

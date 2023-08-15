@@ -2,8 +2,6 @@
   @extend %center;
   @extend %page;
 
-  // background: $color-contessa;
-  // color: $color-quarter-spanish-white;
   overflow: hidden;
   text-align: center;
 
@@ -26,12 +24,20 @@
   }
 
   &:before {
-    background: linear-gradient(to bottom, $color-contessa 15%, rgba($color-contessa, 0) 100%);
+    background: linear-gradient(
+      to bottom,
+      colors(contessa) 15%,
+      rgba(colors(contessa), 0) 100%
+    );
     top: 0;
   }
 
   &:after {
-    background: linear-gradient(to top, $color-contessa 15%, rgba($color-contessa, 0) 100%);
+    background: linear-gradient(
+      to top,
+      colors(contessa) 15%,
+      rgba(colors(contessa), 0) 100%
+    );
     bottom: 0;
   }
 }

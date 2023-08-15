@@ -2,10 +2,11 @@
   @extend %center;
   @extend %page;
 
-  // background: $color-quicksand;
-  // color: $color-quarter-spanish-white;
   transform: translateY(100%);
-  transition: opacity 0.5s 0.5s ease, transform 0s 0.5s, visibility 0.5s 0.5s ease;
+  transition:
+    opacity 0.5s 0.5s ease,
+    transform 0s 0.5s,
+    visibility 0.5s 0.5s ease;
 
   &--active {
     @extend %page--active;
@@ -189,14 +190,10 @@
 
   &:before {
     content: '↗';
-    font-family: $font-suisse-bp;
+    font-family: font(suisse-bp);
     font-weight: 100;
     margin-left: 1rem;
     margin-top: -0.2rem;
-  }
-
-  @include media('<phone') {
-
   }
 }
 

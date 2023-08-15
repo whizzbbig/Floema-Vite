@@ -1,7 +1,7 @@
 .navigation {
   @extend %cover;
 
-  color: $color-quarter-spanish-white;
+  color: colors(quarter-spanish-white);
   pointer-events: none;
   position: fixed;
   z-index: z('navigation');
@@ -31,10 +31,6 @@
 
 .navigation__link__icon {
   display: block;
-}
-
-.navigation__list {
-
 }
 
 .navigation__list__item {

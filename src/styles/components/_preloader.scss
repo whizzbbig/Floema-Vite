@@ -2,8 +2,8 @@
   @extend %center;
   @extend %cover;
 
-  background: $color-contessa;
-  color: $color-quarter-spanish-white;
+  background: colors(contessa);
+  color: colors(quarter-spanish-white);
   text-align: center;
   z-index: z('preloader');
 }

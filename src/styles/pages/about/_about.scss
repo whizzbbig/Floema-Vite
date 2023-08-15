@@ -1,9 +1,6 @@
 .about {
   @extend %page;
 
-  // background: $color-cadet-blue;
-  // color: $color-bright-gray;
-
   &--active {
     @extend %page--active;
   }
@@ -33,10 +30,6 @@
   position: absolute;
   right: 4rem;
   text-transform: uppercase;
-}
-
-.about__footer__copyright {
-
 }
 
 .about__footer__credits {

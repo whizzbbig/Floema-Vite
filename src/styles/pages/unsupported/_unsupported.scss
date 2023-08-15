@@ -1,7 +1,7 @@
 .unsupported {
   align-items: center;
-  background: $color-contessa;
-  color: $color-quarter-spanish-white;
+  background: colors(contessa);
+  color: colors(quarter-spanish-white);
   cursor: default;
   display: flex;
   height: 100%;
@@ -14,7 +14,7 @@
   z-index: 10;
 
   &:before {
-    background: rgba($color-black, 0.5);
+    background: rgba(colors(black), 0.5);
     bottom: 0;
     content: '';
     display: block;
@@ -52,7 +52,7 @@
 }
 
 .unsupported__title {
-  font: 6.4rem/1.22 $font-suisse-bp;
+  font: 6.4rem/1.22 font(suisse-bp);
   letter-spacing: 0.185rem;
   margin-bottom: 6rem;
 
@@ -69,13 +69,13 @@
 }
 
 .unsupported__subtitle {
-  font: 1.8rem $font-george-x;
+  font: 1.8rem font(george-x);
 
   margin-bottom: 1.5rem;
 }
 
 .unsupported__description {
-  font: 3.2rem $font-suisse-bp;
+  font: 3.2rem font(suisse-bp);
   letter-spacing: 0.1rem;
   line-height: 1.53;
   margin-bottom: 14rem;

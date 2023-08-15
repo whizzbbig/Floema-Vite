@@ -111,7 +111,7 @@
   a {
     @extend %link;
 
-    color: $color-white;
+    color: colors(white);
 
     &:after {
       bottom: 0.3rem;

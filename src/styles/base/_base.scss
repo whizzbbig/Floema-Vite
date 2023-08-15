@@ -8,8 +8,8 @@
 html {
   @extend %cover;
 
-  background: $color-contessa;
-  color: $color-quarter-spanish-white;
+  background: colors(contessa);
+  color: colors(quarter-spanish-white);
   font-size: calc(100vw / 1920 * 10);
   line-height: 1;
   overflow: hidden;
@@ -27,7 +27,7 @@ body {
   @extend %cover;
   @extend %description-18;
 
-  font-family: $font-suisse-bp;
+  font-family: font(suisse-bp);
   position: fixed;
 }
 

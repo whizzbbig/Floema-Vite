@@ -1,0 +1,54 @@
+@use 'sass:map';
+
+@function _superget($type, $key, $obj, $defs) {
+  @if map.has-key($obj, $key) {
+    @return map.get($obj, $key);
+  } @else if map.has-key($defs, $key) {
+    @return map.get($defs, $key);
+  } @else {
+    @error "#{$type} #{$key} wasn\"t found";
+  }
+}
+
+// Z-INDEX
+$_z-indexes: () !default;
+$_def-z-indexes: ();
+
+@function z($key) {
+  @return _superget('Z-Index', $key, $_z-indexes, $_def-z-indexes);
+}
+
+// COLORS
+$_colors: () !default;
+$_def-colors: (
+  black: #000,
+  white: #fff,
+);
+
+@function colors($key) {
+  @return _superget('Colors', $key, $_colors, $_def-colors);
+}
+
+// CONSTANTS
+$_constants: () !default;
+$_def-constants: ();
+
+@function const($key) {
+  @return _superget('Constants', $key, $_constants, $_def-constants);
+}
+
+// FONTS
+$_fonts: () !default;
+$_def-fonts: ();
+
+@function font($key) {
+  @return _superget('Fonts', $key, $_fonts, $_def-fonts);
+}
+
+// EASINGS
+$_easings: () !default;
+$_def-easings: ();
+
+@function ease($key) {
+  @return _superget('Easings', $key, $_easings, $_def-easings);
+}
