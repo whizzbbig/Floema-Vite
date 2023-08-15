@@ -34,29 +34,51 @@ const client = prismic.createClient(PRISMIC_REPO, {
   fetch: axiosAdapter,
 });
 
-async function fetchPrismicData() {
-  const about = await client.getSingle('about');
-  const preloader = await client.getSingle('preloader');
-  const home = await client.getSingle('home');
-  const meta = await client.getSingle('meta');
-  const navigation = await client.getSingle('navigation');
+async function fetchAbout() {
+  return client.getSingle('about');
+}
 
-  const collection = await client.getAllByType('collection', {
+async function fetchPreloader() {
+  return client.getSingle('preloader');
+}
+
+async function fetchHome() {
+  return client.getSingle('home');
+}
+
+async function fetchMeta() {
+  return client.getSingle('meta');
+}
+
+async function fetchNavigation() {
+  return client.getSingle('navigation');
+}
+
+async function fetchCollection() {
+  return client.getAllByType('collection', {
     fetchLinks: ['product.image', 'product.model'],
   });
+}
 
-  const products = await client.getAllByType('product', {
+async function fetchCollections() {
+  return client.getSingle('collections', {
+    fetchLinks: 'collection.title',
+  });
+}
+
+async function fetchProducts() {
+  return client.getAllByType('product', {
     fetchLinks: 'collection.title',
     pageSize: 100,
   });
+}
 
-  const collections = await client.getSingle('collections', {
-    fetchLinks: 'collection.title',
-  });
-
+function gatherAssets(home, about, collection) {
   const assets = [];
+  const { gallery } = home.data;
+  const { body } = about.data;
 
-  home.data.gallery.forEach(item => {
+  gallery.forEach(item => {
     assets.push(item.image.url);
   });
 
@@ -64,7 +86,7 @@ async function fetchPrismicData() {
     assets.push(item.image.url);
   });
 
-  about.data.body.forEach(section => {
+  body.forEach(section => {
     if (section.slice_type === 'gallery') {
       section.items.forEach(item => {
         assets.push(item.image.url);
@@ -78,6 +100,32 @@ async function fetchPrismicData() {
       assets.push(item.product.data.model.url);
     });
   });
+
+  return assets;
+}
+
+async function fetchPrismicData() {
+  const [
+    about,
+    preloader,
+    home,
+    meta,
+    navigation,
+    collection,
+    collections,
+    products,
+  ] = await Promise.all([
+    fetchAbout(),
+    fetchPreloader(),
+    fetchHome(),
+    fetchMeta(),
+    fetchNavigation(),
+    fetchCollection(),
+    fetchCollections(),
+    fetchProducts(),
+  ]);
+
+  const assets = gatherAssets(home, about, collection);
 
   const data = {
     assets,

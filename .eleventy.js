@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlmin = require('html-minifier');
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
 const glslifyPlugin = require('vite-plugin-glslify').default;
 
@@ -6,7 +7,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: {
       root: 'src',
-
       plugins: [glslifyPlugin()],
       resolve: {
         alias: {
@@ -24,16 +24,35 @@ module.exports = function (eleventyConfig) {
     },
   });
 
+  // Copy files for asset pipeline
+  eleventyConfig.addPassthroughCopy('public');
   eleventyConfig.addPassthroughCopy('src/app');
   eleventyConfig.addPassthroughCopy('src/fonts');
   eleventyConfig.addPassthroughCopy('src/styles');
-
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
+
+  eleventyConfig.setServerOptions({
+    port: 3000,
+  });
+
+  // Minify HTML
+  eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
+    if (outputPath && outputPath.endsWith('.html')) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+    return content;
+  });
 
   return {
     dir: {
       input: 'src/views',
       output: '_site',
     },
+    passthroughFileCopy: true,
   };
 };
