@@ -30,7 +30,8 @@
     "sass": "^1.65.1",
     "stats.js": "^0.17.0",
     "typescript": "^5.1.6",
-    "vite-plugin-glslify": "^2.0.2"
+    "vite-plugin-glslify": "^2.0.2",
+    "vite-plugin-pwa": "^0.16.4"
   },
   "dependencies": {
     "auto-bind": "^5.0.1",

@@ -1,13 +1,25 @@
 const path = require('path');
 const htmlmin = require('html-minifier');
 const EleventyVitePlugin = require('@11ty/eleventy-plugin-vite');
+const { VitePWA } = require('vite-plugin-pwa');
 const glslifyPlugin = require('vite-plugin-glslify').default;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: {
       root: 'src',
-      plugins: [glslifyPlugin()],
+      plugins: [
+        VitePWA({
+          injectRegister: 'script',
+          registerType: 'autoUpdate',
+          includeAssets: [],
+          workbox: {
+            globPatterns: ['**/*.{js,css,html,png,jpg,svg,woff,woff2}'],
+          },
+        }),
+        glslifyPlugin(),
+      ],
+
       resolve: {
         alias: {
           '@styles': path.resolve('.', '/src/styles'),

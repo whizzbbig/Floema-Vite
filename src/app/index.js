@@ -1,7 +1,6 @@
 import '@styles/index.scss';
 import '@utils/polyfill';
 import '@utils/scroll';
-import '@utils/sw';
 
 import AutoBind from 'auto-bind';
 import Stats from 'stats.js';

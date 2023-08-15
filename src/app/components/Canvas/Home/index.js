@@ -131,8 +131,8 @@ export default class Home {
    * Debug.
    */
   createDebug() {
-    const folder = gui.instance.addFolder('Home');
-    folder.add(this, 'velocity').min(0).max(10).step(0.01);
+    // const folder = gui.instance.addFolder('Home');
+    // folder.add(this, 'velocity').min(0).max(10).step(0.01);
   }
 
   /**
