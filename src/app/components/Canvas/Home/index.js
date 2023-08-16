@@ -133,6 +133,12 @@ export default class Home {
   createDebug() {
     const folder = gui.addFolder('Home');
     folder.add(this, 'velocity').min(0).max(10).step(0.01);
+
+    folder.add(this.y, 'lerp').min(0).max(1).step(0.01).name('Y Lerp');
+    folder.add(this.speed, 'lerp').min(0).max(1).step(0.01).name('Speed Lerp');
+
+    folder.add(this, 'show').name('Show Gallery');
+    folder.add(this, 'hide').name('Hide Gallery');
   }
 
   /**

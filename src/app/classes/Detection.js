@@ -142,6 +142,21 @@ class DetectionManager {
     }
   }
 
+  isWebPSupported() {
+    if (!this.isWebPChecked) {
+      this.isWebPChecked = true;
+
+      const element = document.createElement('canvas');
+
+      if (element.getContext && element.getContext('2d')) {
+        this.isWebPCheck =
+          element.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      }
+    }
+
+    return this.isWebPCheck;
+  }
+
   checkAppBrowser() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 

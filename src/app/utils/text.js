@@ -1,23 +1,15 @@
 import each from 'lodash/each';
 
-export function split({
-  element,
-  expression = ' ',
-  append = true,
-}: {
-  element: HTMLElement;
-  expression?: string;
-  append?: boolean;
-}): NodeListOf<HTMLElement> {
-  const words = splitText(element.innerHTML.trim(), expression);
+export function split({ element, expression = ' ', append = true }) {
+  const words = splitText(element.innerHTML.toString().trim(), expression);
 
   let innerHTML = '';
 
-  each(words, (line: string) => {
+  each(words, line => {
     if (line.indexOf('<br>') > -1) {
       const lines = line.split('<br>');
 
-      each(lines, (line: string, index: number) => {
+      each(lines, (line, index) => {
         innerHTML += index > 0 ? '<br>' + parseLine(line) : parseLine(line);
       });
     } else {
@@ -30,8 +22,8 @@ export function split({
   const spans = element.querySelectorAll('span');
 
   if (append) {
-    each(spans, (span: HTMLElement) => {
-      const isSingleLetter = span.textContent!.length === 1;
+    each(spans, span => {
+      const isSingleLetter = span.textContent.length === 1;
       const isNotEmpty = span.innerHTML.trim() !== '';
       const isNotAndCharacter = span.textContent !== '&';
       const isNotDashCharacter = span.textContent !== '-';
@@ -50,13 +42,13 @@ export function split({
   return spans;
 }
 
-export function calculate(spans: NodeListOf<HTMLElement>): HTMLElement[][] {
-  const lines: HTMLElement[][] = [];
-  let words: HTMLElement[] = [];
+export function calculate(spans) {
+  const lines = [];
+  let words = [];
 
   let position = spans[0].offsetTop;
 
-  each(spans, (span: HTMLElement, index: number) => {
+  each(spans, (span, index) => {
     if (span.offsetTop === position) {
       words.push(span);
     }
@@ -78,12 +70,12 @@ export function calculate(spans: NodeListOf<HTMLElement>): HTMLElement[][] {
   return lines;
 }
 
-function splitText(text: string, expression: string): string[] {
+function splitText(text, expression) {
   const splits = text.split('<br>');
 
-  let words: string[] = [];
+  let words = [];
 
-  each(splits, (item: string, index: number) => {
+  each(splits, (item, index) => {
     if (index > 0) {
       words.push('<br>');
     }
@@ -93,11 +85,12 @@ function splitText(text: string, expression: string): string[] {
     let isLink = false;
     let link = '';
 
-    const innerHTML: string[] = [];
+    const innerHTML = [];
 
-    each(words, (word: string) => {
+    each(words, word => {
       if (!isLink && (word.includes('<a') || word.includes('<strong'))) {
         link = '';
+
         isLink = true;
       }
 
@@ -107,6 +100,7 @@ function splitText(text: string, expression: string): string[] {
 
       if (isLink && (word.includes('/a>') || word.includes('/strong>'))) {
         innerHTML.push(link);
+
         link = '';
       }
 
@@ -125,7 +119,7 @@ function splitText(text: string, expression: string): string[] {
   return words;
 }
 
-function parseLine(line: string): string {
+function parseLine(line) {
   line = line.trim();
 
   if (line === '' || line === ' ') {

@@ -1,4 +1,4 @@
-.collections(data-background="#BC978C" data-color="#F9F1E7")
+.collections(data-background=colors.quicksand data-color=colors["quarter-spanish-white"])
   .collections__wrapper
     .collections__titles
       each line in [0, 1, 2]
@@ -38,7 +38,7 @@
           .collections__mobile__item__title=collection.data.title
 
   each product in prismic.products
-    article.detail(data-background="#BC978C" data-color="#F9F1E7")
+    article.detail(data-background=colors.quicksand data-color=colors["quarter-spanish-white"])
       .detail__wrapper
         figure.detail__media
           img.detail__media__image(alt=product.data.image.alt data-src=product.data.image.url)

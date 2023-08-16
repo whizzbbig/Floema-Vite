@@ -1,21 +1,8 @@
 import AutoBind from 'auto-bind';
 import Prefix from 'prefix';
 
-interface IAnimation {
-  element: HTMLElement;
-  elements: NodeListOf<HTMLElement>;
-}
-
-export default class Animation {
-  element: HTMLElement;
-  elements: NodeListOf<HTMLElement>;
-  target: HTMLElement | null;
-  delay: string | undefined;
-  isVisible: boolean;
-  observer: IntersectionObserver | null;
-  transformPrefix: string;
-
-  constructor({ element, elements }: IAnimation) {
+export default class {
+  constructor({ element, elements }) {
     AutoBind(this);
 
     const { animationDelay, animationTarget } = element.dataset;
@@ -39,7 +26,7 @@ export default class Animation {
     }
   }
 
-  private createObserver() {
+  createObserver() {
     this.observer = new window.IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!this.isVisible && entry.isIntersecting) {
@@ -48,11 +35,7 @@ export default class Animation {
           this.animateOut();
         }
       });
-    });
-
-    if (this.target) {
-      this.observer.observe(this.target);
-    }
+    }).observe(this.target);
   }
 
   animateIn() {

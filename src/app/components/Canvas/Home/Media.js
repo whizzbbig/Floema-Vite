@@ -52,7 +52,7 @@ export default class Media {
     });
 
     this.mesh.setParent(this.scene);
-    // this.mesh.rotation.z = GSAP.utils.random(-Math.PI * 0.03, Math.PI * 0.03)
+    this.mesh.rotation.z = GSAP.utils.random(-Math.PI * 0.03, Math.PI * 0.03);
   }
 
   createBounds({ sizes }) {

@@ -5,6 +5,8 @@ import map from 'lodash/map';
 
 import Media from './Media';
 
+import { gui } from '@classes/GUI';
+
 export default class Gallery {
   constructor({ element, geometry, index, gl, scene, sizes }) {
     this.element = element;
@@ -33,6 +35,8 @@ export default class Gallery {
     });
 
     this.group.setParent(this.scene);
+
+    if (gui) this.createDebug();
   }
 
   createMedias() {
@@ -61,6 +65,11 @@ export default class Gallery {
 
   hide() {
     map(this.medias, media => media.hide());
+  }
+
+  createDebug() {
+    const folder = gui.addFolder('Gallery');
+    folder.add(this.scroll, 'lerp', 0, 1).name('Scroll Lerp');
   }
 
   /**

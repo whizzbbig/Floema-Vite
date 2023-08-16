@@ -1,19 +1,19 @@
 import GSAP from 'gsap';
 
-export function lerp(p1: number, p2: number, t: number): number {
+export function lerp(p1, p2, t) {
   return p1 + (p2 - p1) * t;
 }
 
 export function map(
-  num: number,
-  min1: number,
-  max1: number,
-  min2: number,
-  max2: number,
-  round: boolean = false,
-  constrainMin: boolean = true,
-  constrainMax: boolean = true,
-): number {
+  num,
+  min1,
+  max1,
+  min2,
+  max2,
+  round,
+  constrainMin,
+  constrainMax,
+) {
   if (constrainMin && num < min1) return min2;
   if (constrainMax && num > max1) return max2;
 
@@ -25,22 +25,22 @@ export function map(
   return num2;
 }
 
-export function easeInOut(t: number): number {
+export function easeInOut(t) {
   return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 }
 
-export function interpolate(start: number, end: number, value: number): number {
+export function interpolate(start, end, value) {
   return start * (1.0 - value) + end * value;
 }
 
-export function clamp(min: number, max: number, number: number): number {
+export function clamp(min, max, number) {
   return Math.max(min, Math.min(number, max));
 }
 
-export function random(min: number, max: number): number {
+export function random(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-export function delay(ms: number): Promise<void> {
+export function delay(ms) {
   return new Promise(res => GSAP.delayedCall(ms / 1000, res));
 }

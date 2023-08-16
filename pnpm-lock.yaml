@@ -51,27 +51,6 @@ devDependencies:
   '@prismicio/helpers':
     specifier: ^2.3.9
     version: 2.3.9
-  '@types/events':
-    specifier: ^3.0.0
-    version: 3.0.0
-  '@types/fontfaceobserver':
-    specifier: ^2.1.0
-    version: 2.1.0
-  '@types/html-minifier':
-    specifier: ^4.0.2
-    version: 4.0.2
-  '@types/lodash':
-    specifier: ^4.14.197
-    version: 4.14.197
-  '@types/normalize-wheel':
-    specifier: ^1.0.1
-    version: 1.0.1
-  '@types/semver-compare':
-    specifier: ^1.0.1
-    version: 1.0.1
-  '@types/ua-parser-js':
-    specifier: ^0.7.36
-    version: 0.7.36
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -102,9 +81,6 @@ devDependencies:
   stats.js:
     specifier: ^0.17.0
     version: 0.17.0
-  typescript:
-    specifier: ^5.1.6
-    version: 5.1.6
   vite-plugin-glslify:
     specifier: ^2.0.2
     version: 2.0.2(vite@4.4.9)
@@ -1836,35 +1812,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /@types/clean-css@4.2.6:
-    resolution: {integrity: sha512-Ze1tf+LnGPmG6hBFMi0B4TEB0mhF7EiMM5oyjLDNPE9hxrPU0W+5+bHvO+eFPA+bt0iC1zkQMoU/iGdRVjcRbw==}
-    dependencies:
-      '@types/node': 20.5.0
-      source-map: 0.6.1
-    dev: true
-
   /@types/estree@0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
-    dev: true
-
-  /@types/events@3.0.0:
-    resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
-    dev: true
-
-  /@types/fontfaceobserver@2.1.0:
-    resolution: {integrity: sha512-Vqf183RAiFdIjUi4asKqogf2HIfLDnxn+dQo9GCpnsU5QrrsLMA2bkJU1dHRudQlizLybWD61Csd1zAgUQ3JKQ==}
-    dev: true
-
-  /@types/html-minifier@4.0.2:
-    resolution: {integrity: sha512-4IkmkXJP/25R2fZsCHDX2abztXuQRzUAZq39PfCMz2loLFj8vS9y7aF6vDl58koXSTpsF+eL4Lc5Y4Aww/GCTQ==}
-    dependencies:
-      '@types/clean-css': 4.2.6
-      '@types/relateurl': 0.2.29
-      '@types/uglify-js': 3.17.1
-    dev: true
-
-  /@types/lodash@4.14.197:
-    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
     dev: true
 
   /@types/minimatch@3.0.5:
@@ -1875,36 +1824,14 @@ packages:
     resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
     dev: true
 
-  /@types/normalize-wheel@1.0.1:
-    resolution: {integrity: sha512-3YBVyWfiwIGDcQY+2ZeT3LxyApYnV3PrysjIKeNkQtT9Q9eq2mcPPcqSCYR4v/FhYJ9xtZNhXMKNxCn6ukLsXQ==}
-    dev: true
-
-  /@types/relateurl@0.2.29:
-    resolution: {integrity: sha512-QSvevZ+IRww2ldtfv1QskYsqVVVwCKQf1XbwtcyyoRvLIQzfyPhj/C+3+PKzSDRdiyejaiLgnq//XTkleorpLg==}
-    dev: true
-
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 20.5.0
     dev: true
 
-  /@types/semver-compare@1.0.1:
-    resolution: {integrity: sha512-wx2LQVvKlEkhXp/HoKIZ/aSL+TvfJdKco8i0xJS3aR877mg4qBHzNT6+B5a61vewZHo79EdZavskGnRXEC2H6A==}
-    dev: true
-
   /@types/trusted-types@2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
-    dev: true
-
-  /@types/ua-parser-js@0.7.36:
-    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==}
-    dev: true
-
-  /@types/uglify-js@3.17.1:
-    resolution: {integrity: sha512-GkewRA4i5oXacU/n4MA9+bLgt5/L3F1mKrYvFGm7r2ouLXhRKjuWwo9XHNnbx6WF3vlGW21S3fCvgqxvxXXc5g==}
-    dependencies:
-      source-map: 0.6.1
     dev: true
 
   /a-sync-waterfall@1.0.1:
@@ -4825,12 +4752,6 @@ packages:
 
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
-    dev: true
-
-  /typescript@5.1.6:
-    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
-    engines: {node: '>=14.17'}
-    hasBin: true
     dev: true
 
   /ua-parser-js@1.0.35:

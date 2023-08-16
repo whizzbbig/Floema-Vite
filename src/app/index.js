@@ -25,7 +25,7 @@ class App {
   constructor() {
     this.template = window.location.pathname;
 
-    if (import.meta.env.MODE === 'development') {
+    if (import.meta.env.DEV && window.location.search.indexOf('fps') > -1) {
       this.createStats();
     }
 
@@ -320,7 +320,7 @@ class App {
 const georgeX = new FontFaceObserver('George X');
 const suisseBP = new FontFaceObserver('Suisse BP');
 
-const timeout = 20000;
+const timeout = 2000;
 
 Promise.all([georgeX.load(null, timeout), suisseBP.load(null, timeout)])
   .then(() => {
