@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "auto-bind": "^5.0.1",
-    "detect-gpu": "^5.0.37",
     "events": "^3.3.0",
     "fontfaceobserver": "^2.3.0",
     "gsap": "^3.12.2",

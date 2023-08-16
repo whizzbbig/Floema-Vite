@@ -3,7 +3,7 @@ import GSAP from 'gsap';
 
 import map from 'lodash/map';
 
-import gui from '@classes/GUI';
+import { gui } from '@classes/GUI';
 
 import Media from './Media';
 
@@ -51,7 +51,7 @@ export default class Home {
       sizes: this.sizes,
     });
 
-    this.createDebug();
+    if (gui) this.createDebug();
   }
 
   createGeometry() {
@@ -131,8 +131,8 @@ export default class Home {
    * Debug.
    */
   createDebug() {
-    // const folder = gui.instance.addFolder('Home');
-    // folder.add(this, 'velocity').min(0).max(10).step(0.01);
+    const folder = gui.addFolder('Home');
+    folder.add(this, 'velocity').min(0).max(10).step(0.01);
   }
 
   /**

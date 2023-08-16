@@ -133,7 +133,6 @@ class App {
   onContextMenu(event) {
     event.preventDefault();
     event.stopPropagation();
-
     return false;
   }
 
@@ -182,6 +181,22 @@ class App {
         this.canvas.onResize();
       }
     });
+  }
+
+  onKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+    }
+
+    if (event.key === 'ArrowDown') {
+      this.page.scroll.target += 100;
+    } else if (event.key === 'ArrowUp') {
+      this.page.scroll.target -= 100;
+    }
+  }
+
+  onFocusIn(event) {
+    event.preventDefault();
   }
 
   onTouchDown(event) {
@@ -266,7 +281,12 @@ class App {
 
     window.addEventListener('wheel', this.onWheel, { passive: true });
 
-    window.oncontextmenu = this.onContextMenu;
+    window.addEventListener('keydown', this.onKeyDown);
+    window.addEventListener('focusin', this.onFocusIn);
+
+    if (Detection.isPhone) {
+      window.oncontextmenu = this.onContextMenu;
+    }
   }
 
   addLinkListeners() {
@@ -274,6 +294,7 @@ class App {
 
     each(links, link => {
       const isLocal = link.href.indexOf(window.location.origin) > -1;
+      const isAnchor = link.href.indexOf('#') > -1;
 
       const isNotEmail = link.href.indexOf('mailto') === -1;
       const isNotPhone = link.href.indexOf('tel') === -1;
@@ -282,9 +303,11 @@ class App {
         link.onclick = event => {
           event.preventDefault();
 
-          this.onChange({
-            url: link.href,
-          });
+          if (!isAnchor) {
+            this.onChange({
+              url: link.href,
+            });
+          }
         };
       } else if (isNotEmail && isNotPhone) {
         link.rel = 'noopener';
