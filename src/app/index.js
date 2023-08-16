@@ -284,9 +284,7 @@ class App {
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('focusin', this.onFocusIn);
 
-    if (Detection.isPhone) {
-      window.oncontextmenu = this.onContextMenu;
-    }
+    window.oncontextmenu = this.onContextMenu;
   }
 
   addLinkListeners() {

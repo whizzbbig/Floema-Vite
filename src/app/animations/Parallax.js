@@ -30,7 +30,7 @@ export default class Parallax {
   }
 
   onResize() {
-    this.amount = window.innerWidth < BREAKPOINT_TABLET ? 10 : 150;
+    this.amount = window.innerWidth < BREAKPOINT_TABLET ? 10 : 50;
     this.offset = getOffset(this.element);
   }
 

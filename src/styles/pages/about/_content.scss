@@ -182,6 +182,14 @@
   }
 }
 
+.about__content__media__wrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .about__content__media__image {
   @extend %cover;
 

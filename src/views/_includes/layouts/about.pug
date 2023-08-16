@@ -18,8 +18,9 @@
 
               .about__content__description(data-animation="paragraph")!=prismic.isFilled.richText(section.primary.description)
 
-            figure.about__content__media(data-animation="parallax")
-              img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
+            figure.about__content__media
+              .about__content__media__wrapper(data-animation="parallax")
+                img.about__content__media__image(alt=section.primary.image.alt data-src=section.primary.image.url)
 
       if section.slice_type == 'highlight'
         section.about__highlight

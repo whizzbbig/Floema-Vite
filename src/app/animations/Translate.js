@@ -1,8 +1,8 @@
 import Prefix from 'prefix';
 
-import { BREAKPOINT_TABLET } from 'utils/breakpoints';
-import { getOffset } from 'utils/dom';
-import { map } from 'utils/math';
+import { BREAKPOINT_TABLET } from '@utils/breakpoints';
+import { getOffset } from '@utils/dom';
+import { map } from '@utils/math';
 
 export default class {
   constructor({ element }) {
@@ -28,7 +28,7 @@ export default class {
   }
 
   onResize() {
-    this.amount = window.innerWidth < BREAKPOINT_TABLET ? 10 : 150;
+    this.amount = window.innerWidth < BREAKPOINT_TABLET ? 10 : 50;
     this.offset = getOffset(this.target);
   }
 

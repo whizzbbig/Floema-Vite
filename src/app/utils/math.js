@@ -1,28 +1,11 @@
 import GSAP from 'gsap';
 
 export function lerp(p1, p2, t) {
-  return p1 + (p2 - p1) * t;
+  return GSAP.utils.interpolate(p1, p2, t);
 }
 
-export function map(
-  num,
-  min1,
-  max1,
-  min2,
-  max2,
-  round,
-  constrainMin,
-  constrainMax,
-) {
-  if (constrainMin && num < min1) return min2;
-  if (constrainMax && num > max1) return max2;
-
-  const num1 = (num - min1) / (max1 - min1);
-  const num2 = num1 * (max2 - min2) + min2;
-
-  if (round) return Math.round(num2);
-
-  return num2;
+export function map(valueToMap, inMin, inMax, outMin, outMax) {
+  return GSAP.utils.mapRange(inMin, inMax, outMin, outMax, valueToMap);
 }
 
 export function easeInOut(t) {
@@ -34,11 +17,11 @@ export function interpolate(start, end, value) {
 }
 
 export function clamp(min, max, number) {
-  return Math.max(min, Math.min(number, max));
+  return GSAP.utils.clamp(min, max, number);
 }
 
 export function random(min, max) {
-  return Math.random() * (max - min) + min;
+  return GSAP.utils.random(min, max);
 }
 
 export function delay(ms) {

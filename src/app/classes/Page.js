@@ -8,6 +8,7 @@ import Link from '@animations/Link';
 import Parallax from '@animations/Parallax';
 import Paragraph from '@animations/Paragraph';
 import Rotation from '@animations/Rotation';
+import Translate from '@animations/Translate';
 
 import AsyncLoad from '@classes/AsyncLoad';
 import { Detection } from '@classes/Detection';
@@ -37,6 +38,7 @@ export default class Page extends EventEmitter {
         animationsParallaxes: '[data-animation="parallax"]',
         animationsParagraphs: '[data-animation="paragraph"]',
         animationsRotations: '[data-animation="rotation"]',
+        animationsTranslates: '[data-animation="translate"]',
 
         footer: '.footer',
         footerCredits: '.footer__credits',
@@ -164,6 +166,18 @@ export default class Page extends EventEmitter {
     );
 
     this.animations.push(...this.animationsParagraphs);
+
+    /**
+     * Translates.
+     */
+    this.animationsTranslates = mapEach(
+      this.elements.animationsTranslates,
+      element => {
+        return new Translate({ element });
+      },
+    );
+
+    this.animations.push(...this.animationsTranslates);
   }
 
   /**
