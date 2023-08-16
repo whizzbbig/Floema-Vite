@@ -6,7 +6,9 @@ const glslifyPlugin = require('vite-plugin-glslify').default;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyVitePlugin, {
+    tempFolderName: '.11ty-vite',
     viteOptions: {
+      publicDir: 'public',
       root: 'src',
       plugins: [
         VitePWA({
@@ -66,5 +68,6 @@ module.exports = function (eleventyConfig) {
       output: '_site',
     },
     passthroughFileCopy: true,
+    htmlTemplateEngine: 'pug',
   };
 };
