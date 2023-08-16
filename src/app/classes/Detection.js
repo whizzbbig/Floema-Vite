@@ -16,8 +16,8 @@ class DetectionManager {
       typeof window.getComputedStyle(document.body).mixBlendMode ===
       'undefined';
 
-    this._webGLAvailable = undefined;
-    this._webPSupported = undefined;
+    this._webGLAvailable = null;
+    this._webPSupported = null;
   }
 
   determineDeviceType(deviceType) {
