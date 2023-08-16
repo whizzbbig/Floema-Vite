@@ -31,9 +31,6 @@ dependencies:
   prefix:
     specifier: ^1.0.0
     version: 1.0.0
-  semver-compare:
-    specifier: ^1.0.0
-    version: 1.0.0
   ua-parser-js:
     specifier: ^1.0.35
     version: 1.0.35
@@ -4407,6 +4404,7 @@ packages:
 
   /semver-compare@1.0.0:
     resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
+    dev: true
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}

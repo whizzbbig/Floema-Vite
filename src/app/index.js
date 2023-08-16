@@ -15,8 +15,7 @@ import Navigation from '@components/Navigation';
 import Preloader from '@components/Preloader';
 import Transition from '@components/Transition';
 
-import UnsupportedScreen from '@pages/Unsupported/UnsupportedScreen';
-import WebGLScreen from '@pages/Unsupported/WebGLScreen';
+import Unsupported from '@pages/Unsupported';
 import About from '@pages/About';
 import Collections from '@pages/Collections';
 import Home from '@pages/Home';
@@ -36,13 +35,15 @@ class App {
 
     AutoBind(this);
 
-    this.createCanvas();
-
     Detection.check({
-      onErrorBrowser: this.createUnsupportedScreen,
-      onErrorWebGL: this.createWebGLScreen,
-      onSuccess: this.createPreloader,
+      onErrorWebGL: this.createUnsupportedScreen,
+      onSuccess: this.init,
     });
+  }
+
+  init() {
+    this.createCanvas();
+    this.createPreloader();
 
     this.createTransition();
     this.createNavigation();
@@ -93,13 +94,7 @@ class App {
   }
 
   createUnsupportedScreen() {
-    this.unsupportedScreen = new UnsupportedScreen({
-      onContinue: () => this.createPreloaderScreen(),
-    });
-  }
-
-  createWebGLScreen() {
-    this.webGLScreen = new WebGLScreen();
+    this.UnsupportedScreen = new Unsupported();
   }
 
   /**

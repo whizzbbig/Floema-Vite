@@ -36,7 +36,6 @@
     "normalize-wheel": "^1.0.1",
     "ogl": "^1.0.0",
     "prefix": "^1.0.0",
-    "semver-compare": "^1.0.0",
     "ua-parser-js": "^1.0.35"
   }
 }
