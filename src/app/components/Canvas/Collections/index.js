@@ -72,7 +72,11 @@ export default class Collections {
   }
 
   createGallery() {
+    console.log('this.mediasElements', this.mediasElements);
+
     this.medias = mapEach(this.mediasElements, (element, index) => {
+      console.log(this.detailsElements[index]);
+
       const media = new Media({
         detail: this.detailsElements[index],
         element,
