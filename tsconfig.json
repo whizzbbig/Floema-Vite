@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "baseUrl": ".",
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@animations/*": ["src/app/animations/*"],
+      "@components/*": ["src/app/components/*"],
+      "@canvas/*": ["src/app/components/Canvas/*"],
+      "@shaders/*": ["src/app/shaders/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@classes/*": ["src/app/classes/*"],
+      "@pages/*": ["src/app/pages/*"]
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.d.ts"]
+}
