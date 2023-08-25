@@ -185,7 +185,7 @@ export default class Collections {
 
     mapEach(this.medias, media => media.onResize(event, this.scroll));
 
-    mapEach(this.collectionsElementsLinks, element => {
+    mapEach(this.collectionsElementsLinks, (element, elementIndex) => {
       element.bounds = getOffset(element);
     });
 
@@ -196,7 +196,7 @@ export default class Collections {
     this.scroll.limit = this.bounds.width - this.medias[0].element.clientWidth;
   }
 
-  onTouchDown() {
+  onTouchDown({ x, y }) {
     if (!this.isVisible) return;
 
     this.isDown = true;
@@ -231,7 +231,7 @@ export default class Collections {
     this.scroll.target = this.scroll.last - distance;
   }
 
-  onTouchUp() {
+  onTouchUp({ x, y }) {
     if (!this.isVisible) return;
 
     this.isDown = false;
@@ -275,7 +275,7 @@ export default class Collections {
       4: 0,
     };
 
-    mapEach(this.collectionsElementsLinks, element => {
+    mapEach(this.collectionsElementsLinks, (element, elementIndex) => {
       const index = element.getAttribute('data-index');
 
       map[index] += element.bounds.width;
@@ -365,7 +365,7 @@ export default class Collections {
 
     this.onUpdateTitle();
 
-    mapEach(this.medias, media => {
+    mapEach(this.medias, (media, index) => {
       media.update(this.scroll.current, this.index);
     });
   }

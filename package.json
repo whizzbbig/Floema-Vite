@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf _site",
-    "dev": "npm run clean && eleventy --serve",
-    "build": "npm run clean && eleventy"
+    "dev": "npm run clean && eleventy --config=.eleventy.cjs --serve",
+    "build": "npm run clean && eleventy --config=.eleventy.cjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
@@ -18,7 +18,6 @@
     "@types/lodash": "^4.14.197",
     "@types/normalize-wheel": "^1.0.1",
     "@types/ogl": "npm:ogl-types@^0.0.102",
-    "@types/semver-compare": "^1.0.1",
     "@types/ua-parser-js": "^0.7.36",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",

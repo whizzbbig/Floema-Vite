@@ -5,6 +5,10 @@ const { VitePWA } = require('vite-plugin-pwa');
 const glslifyPlugin = require('vite-plugin-glslify').default;
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setServerOptions({
+    port: 3000,
+  });
+
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     tempFolderName: '.11ty-vite',
     viteOptions: {
@@ -45,14 +49,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/styles');
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
 
-  eleventyConfig.setServerOptions({
-    port: 3000,
-  });
-
   // Minify HTML
-  eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
+  eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
     if (outputPath && outputPath.endsWith('.html')) {
-      let minified = htmlmin.minify(content, {
+      const minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true,

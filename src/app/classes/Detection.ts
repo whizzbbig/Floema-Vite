@@ -7,16 +7,16 @@ enum DeviceType {
 }
 
 class DetectionManager {
-  private parser: any;
-  private type: DeviceType;
+  private readonly parser: UAParser;
+  private readonly type: DeviceType;
   private webGLAvailable: boolean = false;
   private webPSupported: boolean = false;
 
-  isMobile: boolean;
-  isPhone: boolean;
-  isTablet: boolean;
-  isDesktop: boolean;
-  isMixBlendModeUnsupported: boolean;
+  readonly isMobile: boolean;
+  readonly isPhone: boolean;
+  readonly isTablet: boolean;
+  readonly isDesktop: boolean;
+  readonly isMixBlendModeUnsupported: boolean;
 
   constructor() {
     this.parser = new UAParser();
@@ -34,7 +34,7 @@ class DetectionManager {
     this.setHTMLClass();
   }
 
-  private determineDeviceType(deviceType: string): DeviceType {
+  private determineDeviceType(deviceType: string | undefined): DeviceType {
     if (deviceType === 'mobile') {
       return DeviceType.Phone;
     } else if (Object.values(DeviceType).includes(deviceType as DeviceType)) {
@@ -80,7 +80,13 @@ class DetectionManager {
     return /FBAN|FBAV|Twitter/.test(ua);
   }
 
-  check({ onErrorWebGL, onSuccess }: any) {
+  check({
+    onErrorWebGL,
+    onSuccess,
+  }: {
+    onErrorWebGL: () => void;
+    onSuccess: () => void;
+  }) {
     if (!this.isWebGLAvailable()) {
       onErrorWebGL();
     } else {

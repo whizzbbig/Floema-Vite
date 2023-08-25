@@ -66,9 +66,6 @@ devDependencies:
   '@types/ogl':
     specifier: npm:ogl-types@^0.0.102
     version: /ogl-types@0.0.102
-  '@types/semver-compare':
-    specifier: ^1.0.1
-    version: 1.0.1
   '@types/ua-parser-js':
     specifier: ^0.7.36
     version: 0.7.36
@@ -1887,10 +1884,6 @@ packages:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 20.5.1
-    dev: true
-
-  /@types/semver-compare@1.0.1:
-    resolution: {integrity: sha512-wx2LQVvKlEkhXp/HoKIZ/aSL+TvfJdKco8i0xJS3aR877mg4qBHzNT6+B5a61vewZHo79EdZavskGnRXEC2H6A==}
     dev: true
 
   /@types/trusted-types@2.0.3:
