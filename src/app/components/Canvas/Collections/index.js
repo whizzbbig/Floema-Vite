@@ -73,7 +73,6 @@ export default class Collections {
 
   createGallery() {
     this.medias = mapEach(this.mediasElements, (element, index) => {
-
       const media = new Media({
         detail: this.detailsElements[index],
         element,
@@ -116,7 +115,7 @@ export default class Collections {
           rotation: media.mesh.rotation,
           scale: media.mesh.scale,
         },
-        _ => {
+        () => {
           media.opacity.multiplier = 1;
 
           mapEach(this.medias, item => {
@@ -186,7 +185,7 @@ export default class Collections {
 
     mapEach(this.medias, media => media.onResize(event, this.scroll));
 
-    mapEach(this.collectionsElementsLinks, (element, elementIndex) => {
+    mapEach(this.collectionsElementsLinks, element => {
       element.bounds = getOffset(element);
     });
 
@@ -197,7 +196,7 @@ export default class Collections {
     this.scroll.limit = this.bounds.width - this.medias[0].element.clientWidth;
   }
 
-  onTouchDown({ x, y }) {
+  onTouchDown() {
     if (!this.isVisible) return;
 
     this.isDown = true;
@@ -232,7 +231,7 @@ export default class Collections {
     this.scroll.target = this.scroll.last - distance;
   }
 
-  onTouchUp({ x, y }) {
+  onTouchUp() {
     if (!this.isVisible) return;
 
     this.isDown = false;
@@ -276,7 +275,7 @@ export default class Collections {
       4: 0,
     };
 
-    mapEach(this.collectionsElementsLinks, (element, elementIndex) => {
+    mapEach(this.collectionsElementsLinks, element => {
       const index = element.getAttribute('data-index');
 
       map[index] += element.bounds.width;
@@ -366,7 +365,7 @@ export default class Collections {
 
     this.onUpdateTitle();
 
-    mapEach(this.medias, (media, index) => {
+    mapEach(this.medias, media => {
       media.update(this.scroll.current, this.index);
     });
   }

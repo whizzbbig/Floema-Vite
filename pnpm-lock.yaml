@@ -63,6 +63,9 @@ devDependencies:
   '@types/normalize-wheel':
     specifier: ^1.0.1
     version: 1.0.1
+  '@types/ogl':
+    specifier: npm:ogl-types@^0.0.102
+    version: /ogl-types@0.0.102
   '@types/semver-compare':
     specifier: ^1.0.1
     version: 1.0.1
@@ -3929,6 +3932,10 @@ packages:
       define-properties: 1.2.0
       has-symbols: 1.0.3
       object-keys: 1.1.1
+    dev: true
+
+  /ogl-types@0.0.102:
+    resolution: {integrity: sha512-hJW9LeQ0BN68++GqXlwrMsJ89/hBwA7+35TsBDO1okyFOs+TdbiulvsEdA5t+Sr7GvxOHiq2fr+aF9dfU//Q2g==}
     dev: true
 
   /ogl@1.0.0:

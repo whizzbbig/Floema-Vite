@@ -34,5 +34,6 @@
       "@pages/*": ["src/app/pages/*"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.d.ts"]
+
+  "include": ["src", "./**/*.ts", "./**/*.d.ts"]
 }
