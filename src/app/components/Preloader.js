@@ -33,7 +33,7 @@ export default class Preloader extends Component {
       split({
         append: false,
         element,
-        expression: '',
+        expression: ' ',
       });
     });
 
