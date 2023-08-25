@@ -2,6 +2,8 @@
 
 Floema represents a modernized rendition of Bizarro's Floema course from Awwwards, now leveraging the powers of 11ty and Vite for enhanced performance and modularity.
 
+[See Demo](https://floema-vite.vercel.app/)
+
 ## What's new
 
 - 11ty (Eleventy): A light yet powerful static site generator offering swiftness in build times, data flexibility, and a broad template language support.
