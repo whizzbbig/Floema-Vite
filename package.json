@@ -1,10 +1,21 @@
 {
-  "name": "lothus-boilerplate",
+  "name": "floemavite",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A revamped version of Floema with Vite and 11ty integration.",
   "private": true,
-  "version": "0.0.0",
+  "author": "Luis Henrique Bizarro <luis@bizar.ro> (https://twitter.com/bizar_ro/)",
+  "contributors": [
+    "WHIZZBBIG (https://twitter.com/whizzbbig/)",
+    "Charles-Antoine Dupuy <charlesantoine.dupuy@gmail.com> (https://twitter.com/_cadupuy/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whizzbbig/Floema-Vite.git"
+  },
   "scripts": {
     "clean": "rm -rf _site",
-    "dev": "npm run clean && eleventy --config=.eleventy.cjs --serve",
+    "dev": "npm run clean && eleventy --config=.eleventy.cjs --serve --incremental",
     "build": "npm run clean && eleventy --config=.eleventy.cjs"
   },
   "devDependencies": {
