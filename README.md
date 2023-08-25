@@ -1,4 +1,4 @@
-# Lothus Boilerplate
+# Floema + Vite ⚡
 
 ```sh
 ├── /_site/                       # Production directory (minified, optimized and compiled files)
@@ -16,7 +16,7 @@
 # Node
 
 The build should work with any recent version of Node.
-It's recommended to use node v17.5 through NVM
+It's recommended to use node v18.17.1 through NVM
 
 ```sh
 nvm install 18.7.1
@@ -43,10 +43,6 @@ pnpm run build
 ## .env
 
 ```sh
-VITE_PRISMIC_ACCESS_TOKEN=
-PRISMIC_CLIENT_ID=
-PRISMIC_CLIENT_SECRET=
-VITE_PRISMIC_ENDPOINT=https://<something>.prismic.io/api/v2
-
-GOOGLE_ANALYTICS=GOOGLE_ANALYTICS
+PRISMIC_REPOSITORY=
+PRISMIC_ACCESS_TOKEN=
 ```
